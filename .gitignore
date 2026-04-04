@@ -1,0 +1,9 @@
+# oh-my-claudecode runtime state
+.omc/
+
+# Claude Code local permissions (머신별 자동 생성)
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
