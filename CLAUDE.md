@@ -30,3 +30,6 @@
 - 이미지 네이밍: `p{n}{Section}.svg` (예: `p1Problem.svg`, `p3SolutionA.svg`)
 - 프로젝트 4~7은 하이픈이 포함된 이미지 이름 사용 (예: `p4Solution-A.svg`, `p5Impact-1.svg`)
 - 사이드 프로젝트는 `projectData.js`에서 `isSideProject: true`로 표시
+
+# 피그마 링크
+https://www.figma.com/design/yC4yaCpntjTfgvpaRrn8WT/portfolio_with_claude?m=dev
