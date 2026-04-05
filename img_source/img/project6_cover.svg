@@ -80,7 +80,7 @@
   <!-- Period & role -->
   <text x="120" y="750" font-family="'Inter', sans-serif" font-size="16" fill="#888888" letter-spacing="1">2018.12 – 2023.12  ·  Founder &amp; Product Designer  ·  Solo</text>
 
-  <!-- Right side illustration: simplified instrument silhouettes -->
+  <!-- Right dangen_project illustration: simplified instrument silhouettes -->
   <g transform="translate(1100, 100)" opacity="0.12">
     <!-- Abstract violin shape -->
     <ellipse cx="300" cy="200" rx="80" ry="120" fill="none" stroke="#111111" stroke-width="3"/>

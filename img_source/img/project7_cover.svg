@@ -101,7 +101,7 @@
     <text x="354" y="23" font-family="'Inter', sans-serif" font-size="13" fill="#333333" text-anchor="middle">Prompt Engineering</text>
   </g>
 
-  <!-- Right side: AI Sidebar mockup -->
+  <!-- Right dangen_project: AI dangen_projectbar mockup -->
   <g transform="translate(1050, 180)" filter="url(#shadow)">
     <!-- Main screen frame -->
     <rect x="0" y="0" width="700" height="720" rx="20" fill="white" opacity="0.92"/>
@@ -143,11 +143,11 @@
       </g>
     </g>
 
-    <!-- AI Sidebar panel -->
+    <!-- AI dangen_projectbar panel -->
     <rect x="360" y="52" width="320" height="668" rx="0" fill="#FAFBFF"/>
     <rect x="360" y="52" width="2" height="668" fill="#E5E9F5"/>
 
-    <!-- Sidebar header -->
+    <!-- dangen_projectbar header -->
     <rect x="360" y="52" width="320" height="56" fill="#111111"/>
     <text x="380" y="84" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="white">✦ Hubble AI</text>
     <text x="660" y="84" font-family="'Inter', sans-serif" font-size="20" fill="#888888" text-anchor="middle">×</text>
