@@ -33,6 +33,36 @@
 - 프로젝트 4~7은 하이픈이 포함된 이미지 이름 사용 (예: `designSystem_projectSolution-A.svg`, `p5Impact-1.svg`)
 - 사이드 프로젝트는 `projectData.js`에서 `isdangen_projectProject: true`로 표시
 
+# NotebookLM 프로젝트 자료
+
+각 프로젝트명과 동일한 NotebookLM 노트북이 존재하며, 해당 프로젝트 진행 중 수집한 자료가 저장되어 있습니다.
+
+**언제 사용하나**: 포트폴리오 콘텐츠 작성/수정 시 프로젝트의 배경, 의사결정 맥락, 세부 내용을 알 수 없을 때 해당 노트북에 질의합니다.
+
+**사용 방법** (`notebooklm` 스킬 활용):
+
+```bash
+# 노트북 라이브러리 확인
+python3 /Users/ascentkorea/.claude/skills/notebooklm/scripts/run.py notebook_manager.py list
+
+# 특정 노트북에 질의
+python3 /Users/ascentkorea/.claude/skills/notebooklm/scripts/run.py ask_question.py \
+  --question "질문 내용" --notebook-id [노트북ID]
+```
+
+**노트북 목록** (프로젝트명 = 노트북명):
+
+- `myKeyword_project` — ListeningMind 마이키워드 프로젝트 (https://notebooklm.google.com/notebook/89ac55c0-5411-4221-94ab-99f8d944cced)
+- `myKeywordFilter_project` — 마이키워드 필터 프로젝트 (https://notebooklm.google.com/notebook/1645645c-0dac-4ff2-ac25-c4d4e957c46e)
+- `pathDual_project` — 경로 이원화 프로젝트 (https://notebooklm.google.com/notebook/73a413f1-a8ba-48c1-b662-77fc7349fc20)
+- `designSystem_project` — 디자인 시스템 프로젝트 (https://notebooklm.google.com/notebook/7b6dbfba-63cb-4bb8-a00a-d5aefe683046)
+- `munoArt_project` — 무노아트 프로젝트 (https://notebooklm.google.com/notebook/11eb4aec-3a5f-4efe-87c5-c898552266b2)
+- `aiAgent_project` — AI 에이전트 프로젝트 (https://notebooklm.google.com/notebook/428c2efb-4f4d-47bd-99e7-c638282ed5f9)
+- `dangen_project` — Dangen 프로젝트 (https://notebooklm.google.com/notebook/d8736d73-4ccc-4aef-b8c9-c126846e0ef0)
+- `journeyFinder_project` — 저니파인더 프로젝트 (https://notebooklm.google.com/notebook/58964238-6b4c-4829-999a-3978ceb778a0)
+
+> 노트북이 라이브러리에 등록되지 않은 경우, 사용자에게 해당 노트북의 공유 링크를 요청하세요.
+
 # 피그마 링크
 
 - 프로젝트 링크: https://www.figma.com/design/yC4yaCpntjTfgvpaRrn8WT/portfolio_with_claude?m=dev
