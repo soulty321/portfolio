@@ -343,6 +343,77 @@ export const projectData = [
       isdangen_projectProject: false
     },
     {
+      id: "project-8",
+      // Page 1: Overview
+      overview: {
+        headline: "journeyFinder_project_HEADLINE",
+        summary: "journeyFinder_project_SUMMARY",
+        keyMetrics: ["journeyFinder_project_KEY_METRIC_1", "journeyFinder_project_KEY_METRIC_2", "journeyFinder_project_KEY_METRIC_3"],
+        role: "journeyFinder_project_ROLE",
+        contribution: "journeyFinder_project_CONTRIBUTION",
+        period: "journeyFinder_project_PERIOD",
+        team: "journeyFinder_project_TEAM",
+        coverImage: null,
+        tags: ["journeyFinder_project_TAG_1", "journeyFinder_project_TAG_2", "journeyFinder_project_TAG_3"]
+      },
+      // Page 2: Problem Definition
+      problem: {
+        title: "journeyFinder_project_PROBLEM_TITLE",
+        background: "journeyFinder_project_PROBLEM_BACKGROUND",
+        quantitative: "journeyFinder_project_PROBLEM_QUANT",
+        qualitative: "journeyFinder_project_PROBLEM_QUAL",
+        image: "/stitch_source/journeyFinder_projectProblem.svg"
+      },
+      // Page 3: Strategy & Hypothesis
+      strategy: {
+        title: "journeyFinder_project_STRATEGY_TITLE",
+        description: "journeyFinder_project_STRATEGY_DESC",
+        cause: "journeyFinder_project_STRATEGY_CAUSE",
+        causeDesc: "journeyFinder_project_STRATEGY_CAUSE_DESC",
+        hypothesis: "journeyFinder_project_STRATEGY_HYPO",
+        image: "/stitch_source/journeyFinder_projectStrategy.svg"
+      },
+      // Page 4: Solution A
+      solutionA: {
+        title: "journeyFinder_project_SOL_A_TITLE",
+        summary: "journeyFinder_project_SOL_A_SUMMARY",
+        description: [
+          { title: "journeyFinder_project_SOL_A_DESC_1_TITLE", desc: "journeyFinder_project_SOL_A_DESC_1_DESC" },
+          { title: "journeyFinder_project_SOL_A_DESC_2_TITLE", desc: "journeyFinder_project_SOL_A_DESC_2_DESC" }
+        ],
+        image: "/stitch_source/journeyFinder_projectSolutionA.svg"
+      },
+      // Page 5: Solution B
+      solutionB: {
+        title: "journeyFinder_project_SOL_B_TITLE",
+        summary: "journeyFinder_project_SOL_B_SUMMARY",
+        description: [
+          { title: "journeyFinder_project_SOL_B_DESC_1_TITLE", desc: "journeyFinder_project_SOL_B_DESC_1_DESC" },
+          { title: "journeyFinder_project_SOL_B_DESC_2_TITLE", desc: "journeyFinder_project_SOL_B_DESC_2_DESC" },
+          { title: "journeyFinder_project_SOL_B_DESC_3_TITLE", desc: "journeyFinder_project_SOL_B_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/journeyFinder_projectSolutionB.svg",
+        asIs: {
+          image: "project8_asis.png",
+          desc: "journeyFinder_project_SOL_B_ASIS_DESC"
+        },
+        toBe: {
+          image: "project8_tobe.png",
+          desc: "journeyFinder_project_SOL_B_TOBE_DESC"
+        }
+      },
+      // Page 6: Impact & Lesson
+      impact: {
+        outcome: [
+          { title: "journeyFinder_project_IMPACT_OUTCOME_1_TITLE", desc: "journeyFinder_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/journeyFinder_projectImpact1.svg" },
+          { title: "journeyFinder_project_IMPACT_OUTCOME_2_TITLE", desc: "journeyFinder_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/journeyFinder_projectImpact2.svg" },
+          { title: "journeyFinder_project_IMPACT_OUTCOME_3_TITLE", desc: "journeyFinder_project_IMPACT_OUTCOME_3_DESC", image: "/stitch_source/journeyFinder_projectImpact3.svg" }
+        ],
+        lesson: "journeyFinder_project_IMPACT_LESSON"
+      },
+      isdangen_projectProject: false
+    },
+    {
       id: "project-dangen_project",
       overview: {
         headline: "dangen_project_HEADLINE",
