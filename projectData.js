@@ -9,6 +9,71 @@ import project5Cover from "../assets/img/project5_cover.png";
 
 export const projectData = [
     {
+      id: "project-3",
+      overview: {
+        headline: "pathDual_project_HEADLINE",
+        summary: "pathDual_project_SUMMARY",
+        keyMetrics: ["pathDual_project_KEY_METRIC_1", "pathDual_project_KEY_METRIC_2", "pathDual_project_KEY_METRIC_3"],
+        role: "pathDual_project_ROLE",
+        contribution: "pathDual_project_CONTRIBUTION",
+        period: "pathDual_project_PERIOD",
+        team: "pathDual_project_TEAM",
+        coverImage: project3Cover,
+        tags: ["pathDual_project_TAG_1", "pathDual_project_TAG_2", "pathDual_project_TAG_3"]
+      },
+      problem: {
+        title: "pathDual_project_PROBLEM_TITLE",
+        background: "pathDual_project_PROBLEM_BACKGROUND",
+        quantitative: "pathDual_project_PROBLEM_QUANT",
+        qualitative: "pathDual_project_PROBLEM_QUAL",
+        image: "/stitch_source/pathDual_projectProblem.svg"
+      },
+      strategy: {
+        title: "pathDual_project_STRATEGY_TITLE",
+        description: "pathDual_project_STRATEGY_DESC",
+        cause: "pathDual_project_STRATEGY_CAUSE",
+        causeDesc: "pathDual_project_STRATEGY_CAUSE_DESC",
+        hypothesis: "pathDual_project_STRATEGY_HYPO",
+        image: "/stitch_source/pathDual_projectStrategy.svg"
+      },
+      solutionA: {
+        title: "pathDual_project_SOL_A_TITLE",
+        summary: "pathDual_project_SOL_A_SUMMARY",
+        description: [
+          { title: "pathDual_project_SOL_A_DESC_1_TITLE", desc: "pathDual_project_SOL_A_DESC_1_DESC" },
+          { title: "pathDual_project_SOL_A_DESC_2_TITLE", desc: "pathDual_project_SOL_A_DESC_2_DESC" },
+          { title: "pathDual_project_SOL_A_DESC_3_TITLE", desc: "pathDual_project_SOL_A_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/pathDual_projectSolutionA.svg"
+      },
+      solutionB: {
+        title: "pathDual_project_SOL_B_TITLE",
+        summary: "pathDual_project_SOL_B_SUMMARY",
+        description: [
+            { title: "pathDual_project_SOL_B_DESC_1_TITLE", desc: "pathDual_project_SOL_B_DESC_1_DESC" },
+            { title: "pathDual_project_SOL_B_DESC_2_TITLE", desc: "pathDual_project_SOL_B_DESC_2_DESC" },
+            { title: "pathDual_project_SOL_B_DESC_3_TITLE", desc: "pathDual_project_SOL_B_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/pathDual_projectSolutionB.svg",
+        asIs: {
+            image: "project3_asis.png",
+            desc: "pathDual_project_SOL_B_ASIS_DESC"
+        },
+        toBe: {
+            image: "project3_tobe.png",
+            desc: "pathDual_project_SOL_B_TOBE_DESC"
+        }
+      },
+      impact: {
+        outcome: [
+            { title: "pathDual_project_IMPACT_OUTCOME_1_TITLE", desc: "pathDual_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/pathDual_projectImpact1.svg" },
+            { title: "pathDual_project_IMPACT_OUTCOME_2_TITLE", desc: "pathDual_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/pathDual_projectImpact2.svg" }
+        ],
+        lesson: "pathDual_project_IMPACT_LESSON"
+      },
+      isdangen_projectProject: false
+    },
+    {
       id: "project-1",
       // Page 1: Overview
       overview: {
@@ -80,6 +145,72 @@ export const projectData = [
       isdangen_projectProject: false
     },
     {
+      id: "project-4",
+      overview: {
+        headline: "designSystem_project_HEADLINE",
+        summary: "designSystem_project_SUMMARY",
+        keyMetrics: ["designSystem_project_KEY_METRIC_1", "designSystem_project_KEY_METRIC_2", "designSystem_project_KEY_METRIC_3"],
+        role: "designSystem_project_ROLE",
+        contribution: "designSystem_project_CONTRIBUTION",
+        period: "designSystem_project_PERIOD",
+        team: "designSystem_project_TEAM",
+        coverImage: project4Cover,
+        tags: ["designSystem_project_TAG_1", "designSystem_project_TAG_2", "designSystem_project_TAG_3"]
+      },
+      problem: {
+        title: "designSystem_project_PROBLEM_TITLE",
+        background: "designSystem_project_PROBLEM_BACKGROUND",
+        quantitative: "designSystem_project_PROBLEM_QUANT",
+        qualitative: "designSystem_project_PROBLEM_QUAL",
+        image: "/stitch_source/designSystem_projectProblem.svg"
+      },
+      strategy: {
+        title: "designSystem_project_STRATEGY_TITLE",
+        description: "designSystem_project_STRATEGY_DESC",
+        cause: "designSystem_project_STRATEGY_CAUSE",
+        causeDesc: "designSystem_project_STRATEGY_CAUSE_DESC",
+        hypothesis: "designSystem_project_STRATEGY_HYPO",
+        image: "/stitch_source/designSystem_projectStrategy.svg"
+      },
+      solutionA: {
+        title: "designSystem_project_SOL_A_TITLE",
+        summary: "designSystem_project_SOL_A_SUMMARY",
+        description: [
+          { title: "designSystem_project_SOL_A_DESC_1_TITLE", desc: "designSystem_project_SOL_A_DESC_1_DESC" },
+          { title: "designSystem_project_SOL_A_DESC_2_TITLE", desc: "designSystem_project_SOL_A_DESC_2_DESC" },
+          { title: "designSystem_project_SOL_A_DESC_3_TITLE", desc: "designSystem_project_SOL_A_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/designSystem_projectSolution-A.svg"
+      },
+      solutionB: {
+        title: "designSystem_project_SOL_B_TITLE",
+        summary: "designSystem_project_SOL_B_SUMMARY",
+        description: [
+          { title: "designSystem_project_SOL_B_DESC_1_TITLE", desc: "designSystem_project_SOL_B_DESC_1_DESC" },
+          { title: "designSystem_project_SOL_B_DESC_2_TITLE", desc: "designSystem_project_SOL_B_DESC_2_DESC" },
+          { title: "designSystem_project_SOL_B_DESC_3_TITLE", desc: "designSystem_project_SOL_B_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/designSystem_projectSolution-B.svg",
+        asIs: {
+            image: "project4_asis.png",
+            desc: "designSystem_project_SOL_B_ASIS_DESC"
+        },
+        toBe: {
+            image: "project4_tobe.png",
+            desc: "designSystem_project_SOL_B_TOBE_DESC"
+        }
+      },
+      impact: {
+        outcome: [
+            { title: "designSystem_project_IMPACT_OUTCOME_1_TITLE", desc: "designSystem_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/designSystem_projectImpact-1.svg" },
+            { title: "designSystem_project_IMPACT_OUTCOME_2_TITLE", desc: "designSystem_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/designSystem_projectImpact-2.svg" },
+            { title: "designSystem_project_IMPACT_OUTCOME_3_TITLE", desc: "designSystem_project_IMPACT_OUTCOME_3_DESC", image: "/stitch_source/designSystem_projectImpact-3.svg" }
+        ],
+        lesson: "designSystem_project_IMPACT_LESSON"
+      },
+      isdangen_projectProject: false
+    },
+    {
       id: "project-2",
       // Page 1: Overview
       overview: {
@@ -146,137 +277,6 @@ export const projectData = [
             { title: "myKeywordFilter_project_IMPACT_OUTCOME_2_TITLE", desc: "myKeywordFilter_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/myKeywordFilter_projectImpact2.svg" }
         ],
         lesson: "myKeywordFilter_project_IMPACT_LESSON"
-      },
-      isdangen_projectProject: false
-    },
-    {
-      id: "project-3",
-      overview: {
-        headline: "pathDual_project_HEADLINE",
-        summary: "pathDual_project_SUMMARY",
-        keyMetrics: ["pathDual_project_KEY_METRIC_1", "pathDual_project_KEY_METRIC_2", "pathDual_project_KEY_METRIC_3"],
-        role: "pathDual_project_ROLE",
-        contribution: "pathDual_project_CONTRIBUTION",
-        period: "pathDual_project_PERIOD",
-        team: "pathDual_project_TEAM",
-        coverImage: project3Cover,
-        tags: ["pathDual_project_TAG_1", "pathDual_project_TAG_2", "pathDual_project_TAG_3"]
-      },
-      problem: {
-        title: "pathDual_project_PROBLEM_TITLE",
-        background: "pathDual_project_PROBLEM_BACKGROUND",
-        quantitative: "pathDual_project_PROBLEM_QUANT",
-        qualitative: "pathDual_project_PROBLEM_QUAL",
-        image: "/stitch_source/pathDual_projectProblem.svg"
-      },
-      strategy: {
-        title: "pathDual_project_STRATEGY_TITLE",
-        description: "pathDual_project_STRATEGY_DESC",
-        cause: "pathDual_project_STRATEGY_CAUSE",
-        causeDesc: "pathDual_project_STRATEGY_CAUSE_DESC",
-        hypothesis: "pathDual_project_STRATEGY_HYPO",
-        image: "/stitch_source/pathDual_projectStrategy.svg"
-      },
-      solutionA: {
-        title: "pathDual_project_SOL_A_TITLE",
-        summary: "pathDual_project_SOL_A_SUMMARY",
-        description: [
-          { title: "pathDual_project_SOL_A_DESC_1_TITLE", desc: "pathDual_project_SOL_A_DESC_1_DESC" },
-          { title: "pathDual_project_SOL_A_DESC_2_TITLE", desc: "pathDual_project_SOL_A_DESC_2_DESC" },
-          { title: "pathDual_project_SOL_A_DESC_3_TITLE", desc: "pathDual_project_SOL_A_DESC_3_DESC" }
-        ],
-        image: "/stitch_source/pathDual_projectSolutionA.svg"
-      },
-      solutionB: {
-        title: "pathDual_project_SOL_B_TITLE",
-        summary: "pathDual_project_SOL_B_SUMMARY",
-        description: [
-            { title: "pathDual_project_SOL_B_DESC_1_TITLE", desc: "pathDual_project_SOL_B_DESC_1_DESC" },
-            { title: "pathDual_project_SOL_B_DESC_2_TITLE", desc: "pathDual_project_SOL_B_DESC_2_DESC" },
-            { title: "pathDual_project_SOL_B_DESC_3_TITLE", desc: "pathDual_project_SOL_B_DESC_3_DESC" }
-        ],
-        image: "/stitch_source/pathDual_projectSolutionB.svg",
-        asIs: {
-            image: "project3_asis.png",
-            desc: "pathDual_project_SOL_B_ASIS_DESC"
-        },
-        toBe: {
-            image: "project3_tobe.png",
-            desc: "pathDual_project_SOL_B_TOBE_DESC"
-        }
-      },
-      impact: {
-        outcome: [
-            { title: "pathDual_project_IMPACT_OUTCOME_1_TITLE", desc: "pathDual_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/pathDual_projectImpact1.svg" },
-            { title: "pathDual_project_IMPACT_OUTCOME_2_TITLE", desc: "pathDual_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/pathDual_projectImpact2.svg" }
-        ],
-        lesson: "pathDual_project_IMPACT_LESSON"
-      },
-      isdangen_projectProject: false
-    },
-    {
-      id: "project-4",
-      overview: {
-        headline: "designSystem_project_HEADLINE",
-        summary: "designSystem_project_SUMMARY",
-        keyMetrics: ["designSystem_project_KEY_METRIC_1", "designSystem_project_KEY_METRIC_2", "designSystem_project_KEY_METRIC_3"],
-        role: "designSystem_project_ROLE",
-        contribution: "designSystem_project_CONTRIBUTION",
-        period: "designSystem_project_PERIOD",
-        team: "designSystem_project_TEAM",
-        coverImage: project4Cover,
-        tags: ["designSystem_project_TAG_1", "designSystem_project_TAG_2", "designSystem_project_TAG_3"]
-      },
-      problem: {
-        title: "designSystem_project_PROBLEM_TITLE",
-        background: "designSystem_project_PROBLEM_BACKGROUND",
-        quantitative: "designSystem_project_PROBLEM_QUANT",
-        qualitative: "designSystem_project_PROBLEM_QUAL",
-        image: "/stitch_source/designSystem_projectProblem.svg"
-      },
-      strategy: {
-        title: "designSystem_project_STRATEGY_TITLE",
-        description: "designSystem_project_STRATEGY_DESC",
-        cause: "designSystem_project_STRATEGY_CAUSE",
-        causeDesc: "designSystem_project_STRATEGY_CAUSE_DESC",
-        hypothesis: "designSystem_project_STRATEGY_HYPO",
-        image: "/stitch_source/designSystem_projectStrategy.svg"
-      },
-      solutionA: {
-        title: "designSystem_project_SOL_A_TITLE",
-        summary: "designSystem_project_SOL_A_SUMMARY",
-        description: [
-          { title: "designSystem_project_SOL_A_DESC_1_TITLE", desc: "designSystem_project_SOL_A_DESC_1_DESC" },
-          { title: "designSystem_project_SOL_A_DESC_2_TITLE", desc: "designSystem_project_SOL_A_DESC_2_DESC" },
-          { title: "designSystem_project_SOL_A_DESC_3_TITLE", desc: "designSystem_project_SOL_A_DESC_3_DESC" }
-        ],
-        image: "/stitch_source/designSystem_projectSolution-A.svg"
-      },
-      solutionB: {
-        title: "designSystem_project_SOL_B_TITLE",
-        summary: "designSystem_project_SOL_B_SUMMARY",
-        description: [
-          { title: "designSystem_project_SOL_B_DESC_1_TITLE", desc: "designSystem_project_SOL_B_DESC_1_DESC" },
-          { title: "designSystem_project_SOL_B_DESC_2_TITLE", desc: "designSystem_project_SOL_B_DESC_2_DESC" },
-          { title: "designSystem_project_SOL_B_DESC_3_TITLE", desc: "designSystem_project_SOL_B_DESC_3_DESC" }
-        ],
-        image: "/stitch_source/designSystem_projectSolution-B.svg",
-        asIs: {
-            image: "project4_asis.png",
-            desc: "designSystem_project_SOL_B_ASIS_DESC"
-        },
-        toBe: {
-            image: "project4_tobe.png",
-            desc: "designSystem_project_SOL_B_TOBE_DESC"
-        }
-      },
-      impact: {
-        outcome: [
-            { title: "designSystem_project_IMPACT_OUTCOME_1_TITLE", desc: "designSystem_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/designSystem_projectImpact-1.svg" },
-            { title: "designSystem_project_IMPACT_OUTCOME_2_TITLE", desc: "designSystem_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/designSystem_projectImpact-2.svg" },
-            { title: "designSystem_project_IMPACT_OUTCOME_3_TITLE", desc: "designSystem_project_IMPACT_OUTCOME_3_DESC", image: "/stitch_source/designSystem_projectImpact-3.svg" }
-        ],
-        lesson: "designSystem_project_IMPACT_LESSON"
       },
       isdangen_projectProject: false
     },
