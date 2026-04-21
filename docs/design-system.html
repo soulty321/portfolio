@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hubble Intent — 디자인 시스템</title>
+<!--
+  Source of Truth (반드시 동기화):
+    - src/theme/palette.ts
+    - src/theme/typography.ts
+    - src/theme/shapes.ts
+    - src/theme/custom-shadows.ts
+    - src/theme/overrides/components/button.tsx
+    - src/theme/overrides/components/chip.tsx
+  MUI v6 값의 정적 스냅샷입니다. 테마 변경 시 이 파일도 수동으로 맞춰주세요.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* ===== GREY ===== */
+    --grey-100: #FBFAFB;
+    --grey-200: #EAE8EE;
+    --grey-300: #DAD7E0;
+    --grey-400: #C6C2CE;
+    --grey-500: #9691A2;
+    --grey-600: #7F7A8D;
+    --grey-700: #5D596A;
+    --grey-800: #3D3A46;
+    --grey-900: #232128;
+
+    /* ===== PRIMARY (Red) ===== */
+    --primary-light:  #FF5B60;
+    --primary-main:   #FF0209;
+    --primary-dark:   #C81414;
+    --primary-darker: #961E1E;
+
+    /* ===== SECONDARY (Purple) ===== */
+    --secondary-lighter: #E2E0F8;
+    --secondary-light:   #B6B1EE;
+    --secondary-main:    #786EBE;
+    --secondary-dark:    #5E2CC9;
+
+    /* ===== BLUE / RED / PURPLE ===== */
+    --blue-light: #568FFF;
+    --blue-main:  #4F64E1;
+    --red-light:  #EF677F;
+    --red-main:   #E05265;
+    --purple-light: #9D82F7;
+    --purple-main:  #7C5EEC;
+
+    /* ===== STATE ===== */
+    --info-light:   #B6B1EE;
+    --info-main:    #877FBB;
+    --info-dark:    #5A4C9C;
+    --info-darker:  #211643;
+
+    --success-light:  #77ED8B;
+    --success-main:   #22C55E;
+    --success-dark:   #118D57;
+    --success-darker: #065E49;
+
+    --warning-light:  #FFD666;
+    --warning-main:   #FFAB00;
+    --warning-dark:   #B76E00;
+    --warning-darker: #7A4100;
+
+    --error-light: #EF677F;
+    --error-main:  #E05265;
+
+    /* ===== SHAPE & SHADOW ===== */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 30px;
+    --card-radius: 16px;
+    --shadow-small:  1px 2px 15px 1px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 4px 14px 0 rgba(167, 163, 183, 0.26);
+    --shadow-large:  0 5px 20px rgba(47, 44, 65, 0.3);
+
+    /* ===== DASHED GUIDE ===== */
+    --dash-color: #A855F7;
+
+    /* ===== FONT ===== */
+    --font-sans: 'Noto Sans KR', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    color: var(--grey-800);
+    background: var(--grey-100);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+
+  /* ===== Layout ===== */
+  .page {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+  .page-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .page-header h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .page-header .lede {
+    margin: 6px 0 0;
+    color: var(--grey-600);
+    font-size: 14px;
+  }
+  .page-header .meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 1100px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Card ===== */
+  .card {
+    background: #FFFFFF;
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow-medium);
+    padding: 28px 28px 32px;
+    margin-bottom: 24px;
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .card-head h2 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .sub-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 14px;
+  }
+  .sub-head h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--grey-800);
+  }
+  .sub-head .note {
+    color: var(--grey-600);
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .chip-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--blue-main);
+    background: transparent;
+    border: 1px solid var(--blue-main);
+  }
+  .chip-pill.dark { color: var(--grey-800); border-color: var(--grey-300); }
+
+  /* ===== Typography Card ===== */
+  .typo-desc {
+    color: var(--grey-600);
+    font-size: 13px;
+    margin: 6px 0 22px;
+    line-height: 1.55;
+  }
+  .typo-preview {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    margin: 14px 0 6px;
+  }
+  .typo-preview .aa-big {
+    font-size: 128px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--grey-900);
+  }
+  .typo-preview .aa-small {
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--grey-700);
+  }
+  .typo-scale {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 12px;
+  }
+  .typo-scale th, .typo-scale td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .typo-scale th {
+    font-weight: 500;
+    color: var(--grey-500);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .typo-scale td.name { font-weight: 700; color: var(--grey-800); }
+  .typo-scale td.val  { color: var(--grey-600); font-variant-numeric: tabular-nums; }
+
+  /* ===== Colors Card ===== */
+  .color-group { margin-bottom: 18px; }
+  .color-group .label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--grey-600);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  .color-bar {
+    display: grid;
+    grid-template-columns: repeat(var(--n, 9), 1fr);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 34px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+  }
+  .color-bar > span {
+    display: block;
+  }
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .swatch .chip {
+    height: 44px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+  }
+  .swatch .name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey-700);
+    line-height: 1.2;
+  }
+  .swatch .hex {
+    font-size: 10px;
+    color: var(--grey-500);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== Components — Buttons / Badges matrix ===== */
+  .matrix-wrap { position: relative; }
+  .matrix {
+    display: grid;
+    gap: 0;
+  }
+  .matrix.buttons {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .matrix.badges {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .cell-col {
+    border-left: 1px dashed var(--dash-color);
+    padding: 14px 12px 18px;
+  }
+  .cell-col:first-child { border-left: none; padding-left: 4px; }
+  .size-label {
+    font-size: 10px;
+    color: var(--grey-500);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .cell-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--dash-color);
+  }
+  .cell-row:first-of-type { border-top: none; }
+
+  /* ===== Button base (mirrors MUI button.tsx overrides) ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-transform: none;
+    white-space: nowrap;
+    transition: background-color .12s ease, color .12s ease, border-color .12s ease;
+    padding: 0;
+    box-shadow: none;
+  }
+  .btn svg { display: block; }
+  .btn:focus-visible { outline: 2px solid var(--blue-light); outline-offset: 2px; }
+
+  /* Sizes */
+  .btn.xs { height: 24px; font-size: 10px; padding: 0 10px; border-radius: var(--radius-sm); }
+  .btn.sm { height: 28px; font-size: 12px; padding: 0 14px; border-radius: var(--radius-sm); }
+  .btn.md { height: 36px; font-size: 14px; padding: 0 16px; border-radius: var(--radius-md); }
+  .btn.lg { height: 40px; font-size: 14px; padding: 0 16px; border-radius: var(--radius-md); }
+  .btn.xl { height: 48px; font-size: 16px; padding: 0 20px; border-radius: var(--radius-md); }
+
+  /* Icon-only button (square) */
+  .btn.icon { padding: 0; aspect-ratio: 1 / 1; }
+  .btn.icon.xs { width: 24px; }
+  .btn.icon.sm { width: 28px; }
+  .btn.icon.md { width: 36px; }
+  .btn.icon.lg { width: 40px; }
+  .btn.icon.xl { width: 48px; }
+
+  /* Levels — contained */
+  .btn.level-1 { background: var(--primary-light); color: #fff; }
+  .btn.level-1:hover { background: #E64A50; }
+  .btn.level-2 { background: var(--secondary-main); color: #fff; }
+  .btn.level-2:hover { background: #6A61AD; }
+  .btn.level-3 { background: var(--secondary-lighter); color: var(--grey-800); }
+  .btn.level-3:hover { background: #D0CDEE; }
+  .btn.level-4 { background: var(--grey-200); color: var(--grey-800); }
+  .btn.level-4:hover { background: #D8D5DC; }
+
+  /* Variants */
+  .btn.outlined { background: transparent; color: var(--grey-800); border-color: var(--grey-400); }
+  .btn.outlined:hover { background: rgba(0,0,0,0.06); }
+  .btn.text { background: transparent; color: var(--grey-600); font-weight: 500; }
+  .btn.text:hover { background: transparent; color: var(--grey-800); }
+
+  /* Disabled */
+  .btn.disabled, .btn[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ===== Chip / Badge base (mirrors chip.tsx) ===== */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .chip.sm { min-height: 24px; padding: 2px 8px; font-size: 12px; border-radius: var(--radius-sm); }
+  .chip.md { min-height: 28px; padding: 3px 10px; font-size: 13px; border-radius: var(--radius-sm); }
+  .chip.lg { min-height: 32px; padding: 4px 12px; font-size: 14px; border-radius: var(--radius-md); }
+
+  .chip .del { cursor: pointer; opacity: 0.7; display: inline-flex; }
+  .chip .del:hover { opacity: 1; }
+  .chip.icon-only { padding: 0; justify-content: center; }
+  .chip.icon-only.sm { width: 24px; }
+  .chip.icon-only.md { width: 28px; }
+  .chip.icon-only.lg { width: 32px; }
+
+  /* Chip filled colors */
+  .chip.filled.info    { background: var(--blue-main);    color: #fff; border-color: transparent; }
+  .chip.filled.success { background: var(--success-main); color: #fff; }
+  .chip.filled.error   { background: var(--error-main);   color: #fff; }
+  .chip.filled.warning { background: var(--warning-main); color: var(--grey-800); }
+  .chip.filled.secondary { background: var(--blue-light); color: #fff; }
+
+  /* Chip outlined colors */
+  .chip.outlined.info    { background: transparent; color: var(--blue-main);    border-color: var(--blue-main); }
+  .chip.outlined.success { background: transparent; color: var(--success-main); border-color: var(--success-main); }
+  .chip.outlined.error   { background: transparent; color: var(--error-main);   border-color: var(--error-main); }
+  .chip.outlined.warning { background: transparent; color: var(--warning-main); border-color: var(--warning-main); }
+  .chip.outlined.secondary { background: transparent; color: var(--blue-light); border-color: var(--blue-light); }
+
+  /* Domain color grid */
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  /* Scale preview rows */
+  .scale-rows { display: flex; flex-direction: column; gap: 10px; }
+  .scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .scale-row .tag {
+    min-width: 52px;
+    font-size: 11px;
+    color: var(--grey-500);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .scale-row .sample {
+    color: var(--grey-800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Section wrapper inside components card */
+  .component-section {
+    padding-top: 6px;
+    margin-top: 6px;
+  }
+  .component-section + .component-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--grey-200);
+  }
+
+  /* ===== Charts section ===== */
+  .card-full { margin-top: 24px; }
+  .chart-intro {
+    color: var(--grey-600);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 4px 0 18px;
+  }
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+  }
+  .chart-card {
+    border: 1px solid var(--grey-200);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .chart-card h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--grey-800);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chart-card .use {
+    color: var(--grey-600);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .chart-card .spec {
+    font-size: 11px;
+    color: var(--grey-500);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px dashed var(--grey-200);
+  }
+  .chart-card .spec b {
+    color: var(--grey-700);
+    font-weight: 700;
+  }
+  .chart-card .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--grey-200);
+    color: var(--grey-700);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .chart-card svg { width: 100%; height: auto; display: block; }
+
+  .palette-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid var(--grey-200);
+  }
+  .palette-row:first-child { border-top: none; }
+  .palette-row .p-name {
+    width: 128px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--grey-800);
+  }
+  .palette-row .p-use {
+    flex: 1;
+    font-size: 11px;
+    color: var(--grey-600);
+  }
+  .palette-row .swatches {
+    display: flex;
+    gap: 2px;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 20px;
+    min-width: 240px;
+  }
+  .palette-row .swatches span { flex: 1; height: 100%; }
+
+  .usage-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .usage-table th, .usage-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .usage-table th {
+    color: var(--grey-500);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--grey-100);
+  }
+  .usage-table td code {
+    background: var(--grey-200);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+    color: var(--grey-700);
+  }
+  .usage-table td.pal-cell { white-space: nowrap; }
+  .usage-table .mini-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 2px;
+    vertical-align: middle;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--grey-500);
+    text-align: center;
+  }
+  .footer code {
+    background: var(--grey-200);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--grey-700);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div>
+      <h1>Hubble Intent — 디자인 시스템</h1>
+      <p class="lede">Noto Sans 기반 MUI v6 테마의 공식 토큰 카탈로그입니다. 색상 · 타이포그래피 · 컴포넌트를 한 화면에 정리했습니다.</p>
+    </div>
+    <div class="meta">
+      <span class="chip-pill">MUI v6</span>
+      <span class="chip-pill dark">UPDATED 2026.04</span>
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- ===== LEFT SIDEBAR: Typography + Colors ===== -->
+    <aside>
+
+      <!-- Typography -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Typography</h2>
+          <span class="chip-pill">9 STYLES</span>
+        </div>
+        <p class="typo-desc">
+          Noto Sans 계열(Noto Sans KR / JP / Sans)을 로케일별로 매핑한 variable font. 스크린 가독성을 위해 선별된 타입 시스템입니다.
+        </p>
+        <div class="typo-preview">
+          <span class="aa-big">Aa</span>
+          <span class="aa-small">Aa</span>
+        </div>
+        <table class="typo-scale">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Weight</th>
+              <th>Line</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="name">H1</td><td class="val">32</td><td class="val">700</td><td class="val">1.4</td></tr>
+            <tr><td class="name">H2</td><td class="val">28</td><td class="val">700</td><td class="val">1.4</td></tr>
+            <tr><td class="name">H3</td><td class="val">24</td><td class="val">700</td><td class="val">1.4</td></tr>
+            <tr><td class="name">H4</td><td class="val">20</td><td class="val">700</td><td class="val">1.4</td></tr>
+            <tr><td class="name">H5</td><td class="val">18</td><td class="val">700</td><td class="val">1.4</td></tr>
+            <tr><td class="name">body1</td><td class="val">16</td><td class="val">400</td><td class="val">1.5</td></tr>
+            <tr><td class="name">body2</td><td class="val">14</td><td class="val">400</td><td class="val">1.5</td></tr>
+            <tr><td class="name">body3</td><td class="val">12</td><td class="val">400</td><td class="val">1.3</td></tr>
+            <tr><td class="name">caption</td><td class="val">10</td><td class="val">500</td><td class="val">1.3</td></tr>
+          </tbody>
+        </table>
+        <div class="scale-rows" style="margin-top: 18px;">
+          <div class="scale-row"><span class="tag">H1</span><span class="sample" style="font-size:32px;font-weight:700;line-height:1.4;">한글 제목 Heading</span></div>
+          <div class="scale-row"><span class="tag">H3</span><span class="sample" style="font-size:24px;font-weight:700;line-height:1.4;">섹션 제목</span></div>
+          <div class="scale-row"><span class="tag">body1</span><span class="sample" style="font-size:16px;font-weight:400;">기본 본문 텍스트</span></div>
+          <div class="scale-row"><span class="tag">body2</span><span class="sample" style="font-size:14px;font-weight:400;">본문 보조 텍스트</span></div>
+          <div class="scale-row"><span class="tag">caption</span><span class="sample" style="font-size:10px;font-weight:500;letter-spacing:-0.01em;">캡션 / 라벨</span></div>
+        </div>
+      </section>
+
+      <!-- Colors -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Colors</h2>
+          <span class="chip-pill">팔레트</span>
+        </div>
+        <p class="typo-desc">브랜드·중립·상태·도메인 색상 토큰. 모든 값은 <code>src/theme/palette.ts</code> 기반.</p>
+
+        <!-- Grey (9 steps) -->
+        <div class="color-group">
+          <div class="label"><span>Grey</span><span>100 → 900</span></div>
+          <div class="color-bar" style="--n:9;">
+            <span style="background:#FBFAFB"></span>
+            <span style="background:#EAE8EE"></span>
+            <span style="background:#DAD7E0"></span>
+            <span style="background:#C6C2CE"></span>
+            <span style="background:#9691A2"></span>
+            <span style="background:#7F7A8D"></span>
+            <span style="background:#5D596A"></span>
+            <span style="background:#3D3A46"></span>
+            <span style="background:#232128"></span>
+          </div>
+        </div>
+
+        <!-- Primary -->
+        <div class="color-group">
+          <div class="label"><span>Primary (Red)</span><span>light · main · dark · darker</span></div>
+          <div class="color-bar" style="--n:4;">
+            <span style="background:#FF5B60"></span>
+            <span style="background:#FF0209"></span>
+            <span style="background:#C81414"></span>
+            <span style="background:#961E1E"></span>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="color-group">
+          <div class="label"><span>Secondary (Purple)</span><span>lighter · light · main · dark</span></div>
+          <div class="color-bar" style="--n:4;">
+            <span style="background:#E2E0F8"></span>
+            <span style="background:#B6B1EE"></span>
+            <span style="background:#786EBE"></span>
+            <span style="background:#5E2CC9"></span>
+          </div>
+        </div>
+
+        <!-- Status: Success / Warning / Error -->
+        <div class="color-group">
+          <div class="label"><span>Success</span><span>light · main · dark · darker</span></div>
+          <div class="color-bar" style="--n:4;">
+            <span style="background:#77ED8B"></span>
+            <span style="background:#22C55E"></span>
+            <span style="background:#118D57"></span>
+            <span style="background:#065E49"></span>
+          </div>
+        </div>
+        <div class="color-group">
+          <div class="label"><span>Warning</span><span>light · main · dark · darker</span></div>
+          <div class="color-bar" style="--n:4;">
+            <span style="background:#FFD666"></span>
+            <span style="background:#FFAB00"></span>
+            <span style="background:#B76E00"></span>
+            <span style="background:#7A4100"></span>
+          </div>
+        </div>
+        <div class="color-group">
+          <div class="label"><span>Error / Red</span><span>light · main</span></div>
+          <div class="color-bar" style="--n:2;">
+            <span style="background:#EF677F"></span>
+            <span style="background:#E05265"></span>
+          </div>
+        </div>
+        <div class="color-group">
+          <div class="label"><span>Info</span><span>light · main · dark · darker</span></div>
+          <div class="color-bar" style="--n:4;">
+            <span style="background:#B6B1EE"></span>
+            <span style="background:#877FBB"></span>
+            <span style="background:#5A4C9C"></span>
+            <span style="background:#211643"></span>
+          </div>
+        </div>
+
+        <!-- Accent Blue / Purple -->
+        <div class="color-group">
+          <div class="label"><span>Blue</span><span>light · main</span></div>
+          <div class="color-bar" style="--n:2;">
+            <span style="background:#568FFF"></span>
+            <span style="background:#4F64E1"></span>
+          </div>
+        </div>
+        <div class="color-group">
+          <div class="label"><span>Purple</span><span>light · main</span></div>
+          <div class="color-bar" style="--n:2;">
+            <span style="background:#9D82F7"></span>
+            <span style="background:#7C5EEC"></span>
+          </div>
+        </div>
+
+        <!-- Domain: Plan -->
+        <div class="sub-head" style="margin-top:22px;">
+          <h3>Plan (요금제)</h3>
+          <span class="note">5 tiers</span>
+        </div>
+        <div class="domain-grid">
+          <div class="swatch"><div class="chip" style="background:#95B3C7"></div><span class="name">Trial</span><span class="hex">#95B3C7</span></div>
+          <div class="swatch"><div class="chip" style="background:#DA8968"></div><span class="name">Basic</span><span class="hex">#DA8968</span></div>
+          <div class="swatch"><div class="chip" style="background:#8CBD57"></div><span class="name">Standard</span><span class="hex">#8CBD57</span></div>
+          <div class="swatch"><div class="chip" style="background:#BFA055"></div><span class="name">Advance</span><span class="hex">#BFA055</span></div>
+          <div class="swatch"><div class="chip" style="background:#9397FD"></div><span class="name">Professional</span><span class="hex">#9397FD</span></div>
+        </div>
+
+        <!-- Domain: Intent -->
+        <div class="sub-head">
+          <h3>Intent (INCT)</h3>
+          <span class="note">퍼널 단계</span>
+        </div>
+        <div class="domain-grid">
+          <div class="swatch"><div class="chip" style="background:#FF8575"></div><span class="name">Interest</span><span class="hex">#FF8575</span></div>
+          <div class="swatch"><div class="chip" style="background:#FFE526"></div><span class="name">Need</span><span class="hex">#FFE526</span></div>
+          <div class="swatch"><div class="chip" style="background:#46B2F2"></div><span class="name">Consideration</span><span class="hex">#46B2F2</span></div>
+          <div class="swatch"><div class="chip" style="background:#8BC435"></div><span class="name">Transaction</span><span class="hex">#8BC435</span></div>
+        </div>
+
+        <!-- Domain: Trend · Competition -->
+        <div class="sub-head">
+          <h3>Trend · Competition</h3>
+          <span class="note">지표 색상</span>
+        </div>
+        <div class="domain-grid">
+          <div class="swatch"><div class="chip" style="background:#E05265"></div><span class="name">Increase</span><span class="hex">#E05265</span></div>
+          <div class="swatch"><div class="chip" style="background:#4F64E1"></div><span class="name">Decrease</span><span class="hex">#4F64E1</span></div>
+          <div class="swatch"><div class="chip" style="background:#66C357"></div><span class="name">Comp. Low</span><span class="hex">#66C357</span></div>
+          <div class="swatch"><div class="chip" style="background:#FDD64B"></div><span class="name">Comp. Mid</span><span class="hex">#FDD64B</span></div>
+          <div class="swatch"><div class="chip" style="background:#FF602E"></div><span class="name">Comp. High</span><span class="hex">#FF602E</span></div>
+        </div>
+
+        <!-- Chart colors -->
+        <div class="sub-head">
+          <h3>Chart Palette</h3>
+          <span class="note">Line · Bar</span>
+        </div>
+        <div class="color-group">
+          <div class="label"><span>Line Chart</span><span>8 colors</span></div>
+          <div class="color-bar" style="--n:8;">
+            <span style="background:#B775E8"></span>
+            <span style="background:#F96E6E"></span>
+            <span style="background:#46B2F2"></span>
+            <span style="background:#FF99F5"></span>
+            <span style="background:#4685FF"></span>
+            <span style="background:#00AD98"></span>
+            <span style="background:#EBAA03"></span>
+            <span style="background:#35CA00"></span>
+          </div>
+        </div>
+        <div class="color-group">
+          <div class="label"><span>Bar Chart</span><span>8 colors</span></div>
+          <div class="color-bar" style="--n:8;">
+            <span style="background:#DBBAF3"></span>
+            <span style="background:#FCB6B6"></span>
+            <span style="background:#B6DCFF"></span>
+            <span style="background:#FFCCFA"></span>
+            <span style="background:#A2C2FF"></span>
+            <span style="background:#80D6CC"></span>
+            <span style="background:#F5D581"></span>
+            <span style="background:#9AE480"></span>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- ===== MAIN: Components ===== -->
+    <section>
+
+      <!-- Buttons -->
+      <div class="card">
+        <div class="card-head">
+          <h2>Components</h2>
+          <span class="chip-pill">FULLY AUTO-LAYOUT</span>
+        </div>
+
+        <!-- Button matrix: 5 sizes × 5 rows (level 1-4 + disabled) -->
+        <div class="sub-head">
+          <h3>Button</h3>
+          <span class="note">5 sizes · 4 levels · 3 variants</span>
+        </div>
+
+        <div class="matrix-wrap">
+          <div class="matrix buttons">
+            <!-- Size groups xs / sm / md / lg / xl -->
+            <!-- Template per column: size label + 5 rows (L1..L4 + Disabled), each row = text btn + icon btn -->
+
+            <!-- xs -->
+            <div class="cell-col">
+              <div class="size-label">XS · 24px</div>
+              <div class="cell-row"><button class="btn xs level-1">← Button →</button><button class="btn xs icon level-1" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xs level-2">← Button →</button><button class="btn xs icon level-2" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xs level-3">← Button →</button><button class="btn xs icon level-3" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xs level-4">← Button →</button><button class="btn xs icon level-4" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xs level-4 disabled" disabled>← Button →</button><button class="btn xs icon level-4 disabled" disabled aria-label="up">↑</button></div>
+            </div>
+
+            <!-- sm -->
+            <div class="cell-col">
+              <div class="size-label">SM · 28px</div>
+              <div class="cell-row"><button class="btn sm level-1">← Button →</button><button class="btn sm icon level-1" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn sm level-2">← Button →</button><button class="btn sm icon level-2" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn sm level-3">← Button →</button><button class="btn sm icon level-3" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn sm level-4">← Button →</button><button class="btn sm icon level-4" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn sm level-4 disabled" disabled>← Button →</button><button class="btn sm icon level-4 disabled" disabled aria-label="up">↑</button></div>
+            </div>
+
+            <!-- md -->
+            <div class="cell-col">
+              <div class="size-label">MD · 36px</div>
+              <div class="cell-row"><button class="btn md level-1">← Button →</button><button class="btn md icon level-1" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn md level-2">← Button →</button><button class="btn md icon level-2" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn md level-3">← Button →</button><button class="btn md icon level-3" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn md level-4">← Button →</button><button class="btn md icon level-4" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn md level-4 disabled" disabled>← Button →</button><button class="btn md icon level-4 disabled" disabled aria-label="up">↑</button></div>
+            </div>
+
+            <!-- lg -->
+            <div class="cell-col">
+              <div class="size-label">LG · 40px <span style="color:var(--primary-light);font-weight:700;">DEFAULT</span></div>
+              <div class="cell-row"><button class="btn lg level-1">← Button →</button><button class="btn lg icon level-1" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn lg level-2">← Button →</button><button class="btn lg icon level-2" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn lg level-3">← Button →</button><button class="btn lg icon level-3" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn lg level-4">← Button →</button><button class="btn lg icon level-4" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn lg level-4 disabled" disabled>← Button →</button><button class="btn lg icon level-4 disabled" disabled aria-label="up">↑</button></div>
+            </div>
+
+            <!-- xl -->
+            <div class="cell-col">
+              <div class="size-label">XL · 48px</div>
+              <div class="cell-row"><button class="btn xl level-1">← Button →</button><button class="btn xl icon level-1" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xl level-2">← Button →</button><button class="btn xl icon level-2" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xl level-3">← Button →</button><button class="btn xl icon level-3" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xl level-4">← Button →</button><button class="btn xl icon level-4" aria-label="up">↑</button></div>
+              <div class="cell-row"><button class="btn xl level-4 disabled" disabled>← Button →</button><button class="btn xl icon level-4 disabled" disabled aria-label="up">↑</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variants: Outlined / Text -->
+        <div class="sub-head" style="margin-top: 28px;">
+          <h3>Variants</h3>
+          <span class="note">contained · outlined · text</span>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+          <button class="btn lg level-2">Contained</button>
+          <button class="btn lg outlined">Outlined</button>
+          <button class="btn lg text">Text Button</button>
+          <button class="btn lg level-2 disabled" disabled>Disabled</button>
+          <button class="btn lg outlined disabled" disabled>Outlined Off</button>
+        </div>
+      </div>
+
+      <!-- Badge & Chip -->
+      <div class="card">
+        <div class="card-head">
+          <h2>Badge &amp; Chip</h2>
+          <span class="chip-pill">3 SIZES · 2 STYLES</span>
+        </div>
+
+        <div class="matrix-wrap">
+          <div class="matrix badges">
+
+            <!-- 5 color rows per column: Info / Success / Error / Warning / Blue-light -->
+            <!-- Columns: 3 sizes × 2 styles → sm-filled / sm-outlined / md-filled / md-outlined / lg-filled (compact 5-col) -->
+
+            <!-- SM filled -->
+            <div class="cell-col">
+              <div class="size-label">SM · FILLED</div>
+              <div class="cell-row"><span class="chip sm filled info">★ Badge <span class="del">×</span></span><span class="chip sm filled info icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm filled success">★ Badge <span class="del">×</span></span><span class="chip sm filled success icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm filled error">★ Badge <span class="del">×</span></span><span class="chip sm filled error icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm filled warning">★ Badge <span class="del">×</span></span><span class="chip sm filled warning icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm filled secondary">★ Badge <span class="del">×</span></span><span class="chip sm filled secondary icon-only">★</span></div>
+            </div>
+
+            <!-- SM outlined -->
+            <div class="cell-col">
+              <div class="size-label">SM · OUTLINED</div>
+              <div class="cell-row"><span class="chip sm outlined info">★ Badge <span class="del">×</span></span><span class="chip sm outlined info icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm outlined success">★ Badge <span class="del">×</span></span><span class="chip sm outlined success icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm outlined error">★ Badge <span class="del">×</span></span><span class="chip sm outlined error icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm outlined warning">★ Badge <span class="del">×</span></span><span class="chip sm outlined warning icon-only">★</span></div>
+              <div class="cell-row"><span class="chip sm outlined secondary">★ Badge <span class="del">×</span></span><span class="chip sm outlined secondary icon-only">★</span></div>
+            </div>
+
+            <!-- MD filled -->
+            <div class="cell-col">
+              <div class="size-label">MD · FILLED</div>
+              <div class="cell-row"><span class="chip md filled info">★ Badge <span class="del">×</span></span><span class="chip md filled info icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md filled success">★ Badge <span class="del">×</span></span><span class="chip md filled success icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md filled error">★ Badge <span class="del">×</span></span><span class="chip md filled error icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md filled warning">★ Badge <span class="del">×</span></span><span class="chip md filled warning icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md filled secondary">★ Badge <span class="del">×</span></span><span class="chip md filled secondary icon-only">★</span></div>
+            </div>
+
+            <!-- MD outlined -->
+            <div class="cell-col">
+              <div class="size-label">MD · OUTLINED</div>
+              <div class="cell-row"><span class="chip md outlined info">★ Badge <span class="del">×</span></span><span class="chip md outlined info icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md outlined success">★ Badge <span class="del">×</span></span><span class="chip md outlined success icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md outlined error">★ Badge <span class="del">×</span></span><span class="chip md outlined error icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md outlined warning">★ Badge <span class="del">×</span></span><span class="chip md outlined warning icon-only">★</span></div>
+              <div class="cell-row"><span class="chip md outlined secondary">★ Badge <span class="del">×</span></span><span class="chip md outlined secondary icon-only">★</span></div>
+            </div>
+
+            <!-- LG (default 32px) -->
+            <div class="cell-col">
+              <div class="size-label">LG · 32px <span style="color:var(--primary-light);font-weight:700;">DEFAULT</span></div>
+              <div class="cell-row"><span class="chip lg filled info">★ Badge <span class="del">×</span></span><span class="chip lg outlined info icon-only">★</span></div>
+              <div class="cell-row"><span class="chip lg filled success">★ Badge <span class="del">×</span></span><span class="chip lg outlined success icon-only">★</span></div>
+              <div class="cell-row"><span class="chip lg filled error">★ Badge <span class="del">×</span></span><span class="chip lg outlined error icon-only">★</span></div>
+              <div class="cell-row"><span class="chip lg filled warning">★ Badge <span class="del">×</span></span><span class="chip lg outlined warning icon-only">★</span></div>
+              <div class="cell-row"><span class="chip lg filled secondary">★ Badge <span class="del">×</span></span><span class="chip lg outlined secondary icon-only">★</span></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Shape & Shadow -->
+      <div class="card">
+        <div class="card-head">
+          <h2>Shape &amp; Elevation</h2>
+          <span class="chip-pill">토큰</span>
+        </div>
+        <div class="sub-head">
+          <h3>Border Radius</h3>
+          <span class="note">theme.shape</span>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="width:88px;height:88px;background:var(--grey-200);border-radius:var(--radius-sm);"></div>
+            <div style="font-size:11px;margin-top:6px;color:var(--grey-600);">small · 6px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:88px;height:88px;background:var(--grey-200);border-radius:var(--radius-md);"></div>
+            <div style="font-size:11px;margin-top:6px;color:var(--grey-600);">medium · 10px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:88px;height:88px;background:var(--grey-200);border-radius:var(--radius-lg);"></div>
+            <div style="font-size:11px;margin-top:6px;color:var(--grey-600);">large · 30px</div>
+          </div>
+        </div>
+
+        <div class="sub-head">
+          <h3>Shadow</h3>
+          <span class="note">customShadows</span>
+        </div>
+        <div style="display:flex; gap:28px; flex-wrap:wrap; padding: 8px 0 24px;">
+          <div style="text-align:center;">
+            <div style="width:120px;height:80px;background:#fff;border-radius:12px;box-shadow:var(--shadow-small);"></div>
+            <div style="font-size:11px;margin-top:10px;color:var(--grey-600);">small</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:120px;height:80px;background:#fff;border-radius:12px;box-shadow:var(--shadow-medium);"></div>
+            <div style="font-size:11px;margin-top:10px;color:var(--grey-600);">medium</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:120px;height:80px;background:#fff;border-radius:12px;box-shadow:var(--shadow-large);"></div>
+            <div style="font-size:11px;margin-top:10px;color:var(--grey-600);">large</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ===== CHARTS (full width) ===== -->
+  <section class="card card-full">
+    <div class="card-head">
+      <h2>Charts</h2>
+      <span class="chip-pill">@mui/x-charts v8</span>
+    </div>
+    <p class="chart-intro">
+      Hubble Intent 는 키워드 트렌드·경로분석·여정파인더 등 데이터 시각화가 핵심입니다. 모든 차트는 <code style="background:var(--grey-200);padding:2px 6px;border-radius:4px;">@mui/x-charts</code> 기반으로 구성되며, 색상은 theme 팔레트의 <b>lineChart · barChart · communityChart · topic · plan</b> 중 용도에 맞는 배열을 인덱스 순으로 매핑합니다.
+    </p>
+
+    <!-- Palette usage guide -->
+    <div class="sub-head">
+      <h3>팔레트 사용 규칙</h3>
+      <span class="note">theme.palette.*</span>
+    </div>
+    <div>
+      <div class="palette-row">
+        <div class="p-name">lineChart <span style="font-weight:400;color:var(--grey-500);">· 8색</span></div>
+        <div class="p-use">선 기반 시계열 (Trend, Bump, Mini-sparkline). 시리즈 수 ≤ 8.</div>
+        <div class="swatches">
+          <span style="background:#B775E8"></span><span style="background:#F96E6E"></span><span style="background:#46B2F2"></span><span style="background:#FF99F5"></span>
+          <span style="background:#4685FF"></span><span style="background:#00AD98"></span><span style="background:#EBAA03"></span><span style="background:#35CA00"></span>
+        </div>
+      </div>
+      <div class="palette-row">
+        <div class="p-name">barChart <span style="font-weight:400;color:var(--grey-500);">· 8색</span></div>
+        <div class="p-use">막대 기반 비교 (Gap, Journey Bar). 파스텔톤 — 텍스트 컨트라스트 유지 용이.</div>
+        <div class="swatches">
+          <span style="background:#DBBAF3"></span><span style="background:#FCB6B6"></span><span style="background:#B6DCFF"></span><span style="background:#FFCCFA"></span>
+          <span style="background:#A2C2FF"></span><span style="background:#80D6CC"></span><span style="background:#F5D581"></span><span style="background:#9AE480"></span>
+        </div>
+      </div>
+      <div class="palette-row">
+        <div class="p-name">topic <span style="font-weight:400;color:var(--grey-500);">· 20색</span></div>
+        <div class="p-use">마이키워드 토픽, 버블 차트. 다수의 카테고리를 구분해야 할 때.</div>
+        <div class="swatches">
+          <span style="background:#F8CF68"></span><span style="background:#D0AEA1"></span><span style="background:#FFC4EE"></span><span style="background:#E2C6F6"></span>
+          <span style="background:#F895E8"></span><span style="background:#C1A5FC"></span><span style="background:#89E1DC"></span><span style="background:#8BD5FF"></span>
+        </div>
+      </div>
+      <div class="palette-row">
+        <div class="p-name">communityChart <span style="font-weight:400;color:var(--grey-500);">· 26색</span></div>
+        <div class="p-use">클러스터·커뮤니티 그래프 노드용. 20색 이상 필요한 고밀도 네트워크 전용.</div>
+        <div class="swatches">
+          <span style="background:#F8CF68"></span><span style="background:#BE9081"></span><span style="background:#F895E8"></span><span style="background:#C1A5FC"></span>
+          <span style="background:#5E9995"></span><span style="background:#FB989A"></span><span style="background:#6F91EF"></span><span style="background:#00AD98"></span>
+        </div>
+      </div>
+      <div class="palette-row">
+        <div class="p-name">plan <span style="font-weight:400;color:var(--grey-500);">· 5색</span></div>
+        <div class="p-use">요금제 스택 바 전용 (Trial · Basic · Standard · Advance · Professional).</div>
+        <div class="swatches">
+          <span style="background:#95B3C7"></span><span style="background:#DA8968"></span><span style="background:#8CBD57"></span><span style="background:#BFA055"></span><span style="background:#9397FD"></span>
+        </div>
+      </div>
+      <div class="palette-row">
+        <div class="p-name">filter.intent <span style="font-weight:400;color:var(--grey-500);">· 4색</span></div>
+        <div class="p-use">INCT 퍼널(Interest · Need · Consideration · Transaction) 고정 매핑. 인덱스 순회 금지.</div>
+        <div class="swatches">
+          <span style="background:#FF8575"></span><span style="background:#FFE526"></span><span style="background:#46B2F2"></span><span style="background:#8BC435"></span>
+        </div>
+      </div>
+      <div class="palette-row">
+        <div class="p-name">filter.trend <span style="font-weight:400;color:var(--grey-500);">· 2색</span></div>
+        <div class="p-use">증감 지표. Increase <span style="color:#E05265;font-weight:700;">#E05265</span> · Decrease <span style="color:#4F64E1;font-weight:700;">#4F64E1</span> 고정.</div>
+        <div class="swatches">
+          <span style="background:#E05265"></span><span style="background:#4F64E1"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Type Catalog -->
+    <div class="sub-head">
+      <h3>차트 타입 카탈로그</h3>
+      <span class="note">6 types</span>
+    </div>
+
+    <div class="chart-grid">
+
+      <!-- Line Chart -->
+      <div class="chart-card">
+        <h4>Line Chart <span class="pill">TREND</span></h4>
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#EAE8EE" stroke-width="1" stroke-dasharray="2 4">
+            <line x1="44" y1="28"  x2="388" y2="28"/>
+            <line x1="44" y1="66"  x2="388" y2="66"/>
+            <line x1="44" y1="104" x2="388" y2="104"/>
+            <line x1="44" y1="142" x2="388" y2="142"/>
+          </g>
+          <line x1="44" y1="142" x2="388" y2="142" stroke="#9691A2"/>
+          <line x1="44" y1="18"  x2="44"  y2="142" stroke="#9691A2"/>
+          <g font-size="9" fill="#9691A2" font-family="inherit">
+            <text x="40" y="31"  text-anchor="end">100</text>
+            <text x="40" y="69"  text-anchor="end">75</text>
+            <text x="40" y="107" text-anchor="end">50</text>
+            <text x="40" y="145" text-anchor="end">25</text>
+            <text x="72"  y="156" text-anchor="middle">Jan</text>
+            <text x="128" y="156" text-anchor="middle">Feb</text>
+            <text x="184" y="156" text-anchor="middle">Mar</text>
+            <text x="240" y="156" text-anchor="middle">Apr</text>
+            <text x="296" y="156" text-anchor="middle">May</text>
+            <text x="352" y="156" text-anchor="middle">Jun</text>
+          </g>
+          <polyline fill="none" stroke="#B775E8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="72,105 128,78 184,92 240,60 296,72 352,45"/>
+          <polyline fill="none" stroke="#F96E6E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="72,132 128,118 184,95 240,100 296,82 352,70"/>
+          <polyline fill="none" stroke="#46B2F2" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="72,88 128,98 184,72 240,84 296,62 352,48"/>
+          <polyline fill="none" stroke="#FF99F5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="72,120 128,104 184,114 240,90 296,100 352,82"/>
+          <g>
+            <circle cx="352" cy="45" r="3" fill="#B775E8"/>
+            <circle cx="352" cy="70" r="3" fill="#F96E6E"/>
+            <circle cx="352" cy="48" r="3" fill="#46B2F2"/>
+            <circle cx="352" cy="82" r="3" fill="#FF99F5"/>
+          </g>
+          <g font-size="9" fill="#5D596A" transform="translate(64 172)">
+            <circle cx="0" cy="-3" r="3" fill="#B775E8"/><text x="7" y="0">Series A</text>
+            <circle cx="68" cy="-3" r="3" fill="#F96E6E"/><text x="75" y="0">Series B</text>
+            <circle cx="138" cy="-3" r="3" fill="#46B2F2"/><text x="145" y="0">Series C</text>
+            <circle cx="208" cy="-3" r="3" fill="#FF99F5"/><text x="215" y="0">Series D</text>
+          </g>
+        </svg>
+        <p class="use">시계열 추세 비교. 여러 키워드·지표를 동시에 보여줄 때. 시간축은 <code>scaleType: 'time'</code> 또는 <code>'point'</code>.</p>
+        <div class="spec">
+          <span><b>Palette</b> lineChart</span>
+          <span><b>Stroke</b> 2px</span>
+          <span><b>Max series</b> 8</span>
+        </div>
+      </div>
+
+      <!-- Bar Chart -->
+      <div class="chart-card">
+        <h4>Bar Chart <span class="pill">COMPARE</span></h4>
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#EAE8EE" stroke-width="1" stroke-dasharray="2 4">
+            <line x1="44" y1="32"  x2="388" y2="32"/>
+            <line x1="44" y1="68"  x2="388" y2="68"/>
+            <line x1="44" y1="104" x2="388" y2="104"/>
+            <line x1="44" y1="140" x2="388" y2="140"/>
+          </g>
+          <line x1="44" y1="140" x2="388" y2="140" stroke="#9691A2"/>
+          <g font-size="9" fill="#9691A2">
+            <text x="40" y="35"  text-anchor="end">80</text>
+            <text x="40" y="71"  text-anchor="end">60</text>
+            <text x="40" y="107" text-anchor="end">40</text>
+            <text x="40" y="143" text-anchor="end">20</text>
+          </g>
+          <!-- Grouped bars: 5 categories × 2 series -->
+          <g>
+            <rect x="70"  y="54"  width="18" height="86" rx="2" fill="#DBBAF3"/>
+            <rect x="90"  y="74"  width="18" height="66" rx="2" fill="#FCB6B6"/>
+
+            <rect x="136" y="90"  width="18" height="50" rx="2" fill="#DBBAF3"/>
+            <rect x="156" y="60"  width="18" height="80" rx="2" fill="#FCB6B6"/>
+
+            <rect x="202" y="44"  width="18" height="96" rx="2" fill="#DBBAF3"/>
+            <rect x="222" y="72"  width="18" height="68" rx="2" fill="#FCB6B6"/>
+
+            <rect x="268" y="80"  width="18" height="60" rx="2" fill="#DBBAF3"/>
+            <rect x="288" y="50"  width="18" height="90" rx="2" fill="#FCB6B6"/>
+
+            <rect x="334" y="64"  width="18" height="76" rx="2" fill="#DBBAF3"/>
+            <rect x="354" y="92"  width="18" height="48" rx="2" fill="#FCB6B6"/>
+          </g>
+          <g font-size="9" fill="#9691A2" text-anchor="middle">
+            <text x="89"  y="154">Q1</text>
+            <text x="155" y="154">Q2</text>
+            <text x="221" y="154">Q3</text>
+            <text x="287" y="154">Q4</text>
+            <text x="353" y="154">Q5</text>
+          </g>
+          <g font-size="9" fill="#5D596A" transform="translate(100 172)">
+            <rect x="0"   y="-7" width="10" height="10" rx="2" fill="#DBBAF3"/><text x="15" y="1">Current</text>
+            <rect x="78"  y="-7" width="10" height="10" rx="2" fill="#FCB6B6"/><text x="93" y="1">Previous</text>
+          </g>
+        </svg>
+        <p class="use">카테고리 간 크기 비교. 키워드 갭, 경쟁자 대비 스코어 등. Grouped / Stacked 전환 가능.</p>
+        <div class="spec">
+          <span><b>Palette</b> barChart</span>
+          <span><b>Radius</b> 2px</span>
+          <span><b>Gap</b> 4px</span>
+        </div>
+      </div>
+
+      <!-- Stacked Bar (horizontal) -->
+      <div class="chart-card">
+        <h4>Stacked Bar <span class="pill">COMPOSITION</span></h4>
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <g font-size="10" fill="#5D596A">
+            <text x="8" y="30">Trial</text>
+            <text x="8" y="58">Basic</text>
+            <text x="8" y="86">Standard</text>
+            <text x="8" y="114">Advance</text>
+            <text x="8" y="142">Pro</text>
+          </g>
+          <g>
+            <rect x="72"  y="18" width="140" height="16" rx="3" fill="#95B3C7"/>
+            <rect x="72"  y="46" width="190" height="16" rx="3" fill="#DA8968"/>
+            <rect x="72"  y="74" width="240" height="16" rx="3" fill="#8CBD57"/>
+            <rect x="72"  y="102" width="196" height="16" rx="3" fill="#BFA055"/>
+            <rect x="72"  y="130" width="280" height="16" rx="3" fill="#9397FD"/>
+          </g>
+          <g font-size="10" fill="#3D3A46" font-weight="700">
+            <text x="220" y="30">38%</text>
+            <text x="270" y="58">52%</text>
+            <text x="320" y="86">64%</text>
+            <text x="276" y="114">54%</text>
+            <text x="360" y="142">78%</text>
+          </g>
+          <line x1="72" y1="14" x2="72" y2="152" stroke="#EAE8EE" stroke-width="1"/>
+        </svg>
+        <p class="use">구성비·누적 합계. 요금제 점유율 (plan 팔레트), INCT 퍼널 등 <b>고정 카테고리</b> 매핑에 최적.</p>
+        <div class="spec">
+          <span><b>Palette</b> plan</span>
+          <span><b>Direction</b> horizontal</span>
+          <span><b>Label</b> 8px inline</span>
+        </div>
+      </div>
+
+      <!-- Bump Chart -->
+      <div class="chart-card">
+        <h4>Bump Chart <span class="pill">RANKING</span></h4>
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#EAE8EE" stroke-width="1" stroke-dasharray="2 4">
+            <line x1="56" y1="30" x2="388" y2="30"/>
+            <line x1="56" y1="62" x2="388" y2="62"/>
+            <line x1="56" y1="94" x2="388" y2="94"/>
+            <line x1="56" y1="126" x2="388" y2="126"/>
+          </g>
+          <line x1="56" y1="18" x2="56" y2="142" stroke="#9691A2"/>
+          <g font-size="10" fill="#9691A2" text-anchor="end" font-weight="700">
+            <text x="50" y="33">1</text>
+            <text x="50" y="65">2</text>
+            <text x="50" y="97">3</text>
+            <text x="50" y="129">4</text>
+          </g>
+          <g font-size="9" fill="#9691A2" text-anchor="middle">
+            <text x="90"  y="158">W1</text>
+            <text x="164" y="158">W2</text>
+            <text x="238" y="158">W3</text>
+            <text x="312" y="158">W4</text>
+            <text x="380" y="158">W5</text>
+          </g>
+          <polyline fill="none" stroke="#B775E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="90,30 164,62 238,30 312,30 380,62"/>
+          <polyline fill="none" stroke="#F96E6E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="90,62 164,30 238,94 312,62 380,30"/>
+          <polyline fill="none" stroke="#46B2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="90,94 164,126 238,62 312,94 380,94"/>
+          <polyline fill="none" stroke="#00AD98" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="90,126 164,94 238,126 312,126 380,126"/>
+          <g>
+            <circle cx="90"  cy="30"  r="4" fill="#fff" stroke="#B775E8" stroke-width="2"/>
+            <circle cx="164" cy="62"  r="4" fill="#fff" stroke="#B775E8" stroke-width="2"/>
+            <circle cx="238" cy="30"  r="4" fill="#fff" stroke="#B775E8" stroke-width="2"/>
+            <circle cx="312" cy="30"  r="4" fill="#fff" stroke="#B775E8" stroke-width="2"/>
+            <circle cx="380" cy="62"  r="4" fill="#fff" stroke="#B775E8" stroke-width="2"/>
+          </g>
+        </svg>
+        <p class="use">주간·월간 순위 변동. 키워드 트렌드 랭킹 이동을 시각적으로 추적. Y축은 <b>반전</b> (1등이 상단).</p>
+        <div class="spec">
+          <span><b>Palette</b> lineChart</span>
+          <span><b>Stroke</b> 3px</span>
+          <span><b>Node</b> ring 2px</span>
+        </div>
+      </div>
+
+      <!-- Bubble Chart -->
+      <div class="chart-card">
+        <h4>Bubble Chart <span class="pill">3-DIM</span></h4>
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <line x1="44" y1="156" x2="388" y2="156" stroke="#9691A2"/>
+          <line x1="44" y1="18"  x2="44"  y2="156" stroke="#9691A2"/>
+          <g stroke="#EAE8EE" stroke-width="1" stroke-dasharray="2 4">
+            <line x1="44" y1="46"  x2="388" y2="46"/>
+            <line x1="44" y1="86"  x2="388" y2="86"/>
+            <line x1="44" y1="126" x2="388" y2="126"/>
+          </g>
+          <g opacity="0.85">
+            <circle cx="96"  cy="108" r="14" fill="#F8CF68"/>
+            <circle cx="134" cy="60"  r="22" fill="#C1A5FC"/>
+            <circle cx="176" cy="92"  r="10" fill="#F895E8"/>
+            <circle cx="216" cy="40"  r="28" fill="#89E1DC"/>
+            <circle cx="256" cy="126" r="16" fill="#FFB5B5"/>
+            <circle cx="294" cy="74"  r="20" fill="#8BD5FF"/>
+            <circle cx="336" cy="54"  r="12" fill="#65BA72"/>
+            <circle cx="362" cy="110" r="18" fill="#CAA932"/>
+          </g>
+          <g font-size="9" fill="#9691A2">
+            <text x="40" y="160" text-anchor="end">Low</text>
+            <text x="40" y="22"  text-anchor="end">High</text>
+            <text x="48"  y="170">Volume →</text>
+            <text x="380" y="170" text-anchor="end">Competition →</text>
+          </g>
+        </svg>
+        <p class="use">여정파인더 등 3차원 (X, Y, Size) 관계. 버블 크기 = 세번째 지표 (볼륨/가중치).</p>
+        <div class="spec">
+          <span><b>Palette</b> topic</span>
+          <span><b>Opacity</b> 0.85</span>
+          <span><b>Radius</b> scale by value</span>
+        </div>
+      </div>
+
+      <!-- Sparkline / Mini chart -->
+      <div class="chart-card">
+        <h4>Mini Sparkline <span class="pill">INLINE</span></h4>
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <g font-size="11" fill="#3D3A46" font-weight="500">
+            <text x="12" y="46">Keyword A</text>
+            <text x="12" y="96">Keyword B</text>
+            <text x="12" y="146">Keyword C</text>
+          </g>
+          <g font-size="10" fill="#9691A2" text-anchor="end">
+            <text x="388" y="46">+12.4%</text>
+            <text x="388" y="96">-3.1%</text>
+            <text x="388" y="146">+28.0%</text>
+          </g>
+          <!-- Row 1 -->
+          <g transform="translate(130 28)">
+            <path d="M0,24 L20,18 L40,20 L60,14 L80,16 L100,8 L120,10 L140,4 L160,6 L180,0 L200,24 L200,24 L0,24 Z" fill="#4F64E1" opacity="0.1"/>
+            <polyline fill="none" stroke="#4F64E1" stroke-width="1.5" points="0,24 20,18 40,20 60,14 80,16 100,8 120,10 140,4 160,6 180,0"/>
+          </g>
+          <!-- Row 2 -->
+          <g transform="translate(130 78)">
+            <path d="M0,6 L20,4 L40,12 L60,10 L80,16 L100,14 L120,20 L140,18 L160,22 L180,20 L180,24 L0,24 Z" fill="#E05265" opacity="0.1"/>
+            <polyline fill="none" stroke="#E05265" stroke-width="1.5" points="0,6 20,4 40,12 60,10 80,16 100,14 120,20 140,18 160,22 180,20"/>
+          </g>
+          <!-- Row 3 -->
+          <g transform="translate(130 128)">
+            <path d="M0,22 L20,20 L40,16 L60,18 L80,12 L100,10 L120,14 L140,8 L160,6 L180,2 L180,24 L0,24 Z" fill="#22C55E" opacity="0.1"/>
+            <polyline fill="none" stroke="#22C55E" stroke-width="1.5" points="0,22 20,20 40,16 60,18 80,12 100,10 120,14 140,8 160,6 180,2"/>
+          </g>
+        </svg>
+        <p class="use">테이블 로우 인라인 트렌드. 축/라벨 <b>없이</b> 증감만 암시. 색상은 추세 방향 (trend palette).</p>
+        <div class="spec">
+          <span><b>Palette</b> filter.trend</span>
+          <span><b>Stroke</b> 1.5px</span>
+          <span><b>Area α</b> 0.1</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Chart Anatomy -->
+    <div class="sub-head">
+      <h3>Chart Anatomy</h3>
+      <span class="note">구성 요소 표준</span>
+    </div>
+    <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:900px;">
+      <!-- Chart frame -->
+      <g stroke="#EAE8EE" stroke-width="1" stroke-dasharray="2 4">
+        <line x1="80"  y1="40"  x2="560" y2="40"/>
+        <line x1="80"  y1="90"  x2="560" y2="90"/>
+        <line x1="80"  y1="140" x2="560" y2="140"/>
+        <line x1="80"  y1="190" x2="560" y2="190"/>
+      </g>
+      <line x1="80" y1="190" x2="560" y2="190" stroke="#9691A2"/>
+      <line x1="80" y1="30"  x2="80"  y2="190" stroke="#9691A2"/>
+      <g font-size="10" fill="#9691A2" text-anchor="end">
+        <text x="74" y="43">100</text>
+        <text x="74" y="93">75</text>
+        <text x="74" y="143">50</text>
+        <text x="74" y="193">25</text>
+      </g>
+      <g font-size="10" fill="#9691A2" text-anchor="middle">
+        <text x="140" y="206">Jan</text>
+        <text x="220" y="206">Feb</text>
+        <text x="300" y="206">Mar</text>
+        <text x="380" y="206">Apr</text>
+        <text x="460" y="206">May</text>
+        <text x="540" y="206">Jun</text>
+      </g>
+      <polyline fill="none" stroke="#B775E8" stroke-width="2" stroke-linejoin="round" points="140,140 220,110 300,120 380,80 460,90 540,55"/>
+      <polyline fill="none" stroke="#F96E6E" stroke-width="2" stroke-linejoin="round" points="140,170 220,150 300,120 380,130 460,108 540,95"/>
+      <!-- Highlighted point -->
+      <circle cx="380" cy="80" r="5" fill="#fff" stroke="#B775E8" stroke-width="2"/>
+      <!-- Tooltip -->
+      <g transform="translate(396 42)">
+        <rect x="0" y="0" width="148" height="56" rx="8" fill="#fff" stroke="#DAD7E0"/>
+        <text x="12" y="18" font-size="10" fill="#5D596A" font-weight="700">April 2026</text>
+        <circle cx="14" cy="32" r="3" fill="#B775E8"/><text x="22" y="35" font-size="10" fill="#3D3A46">Series A</text><text x="138" y="35" font-size="10" fill="#3D3A46" font-weight="700" text-anchor="end">78</text>
+        <circle cx="14" cy="46" r="3" fill="#F96E6E"/><text x="22" y="49" font-size="10" fill="#3D3A46">Series B</text><text x="138" y="49" font-size="10" fill="#3D3A46" font-weight="700" text-anchor="end">52</text>
+      </g>
+      <!-- Legend -->
+      <g font-size="11" fill="#5D596A" transform="translate(140 230)">
+        <circle cx="0" cy="-3" r="3" fill="#B775E8"/><text x="8" y="0">Series A</text>
+        <circle cx="80" cy="-3" r="3" fill="#F96E6E"/><text x="88" y="0">Series B</text>
+      </g>
+
+      <!-- Annotations -->
+      <g font-size="11" fill="#786EBE" font-weight="700">
+        <!-- Y axis label -->
+        <line x1="20" y1="90" x2="72" y2="90" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <text x="20" y="86">① Y axis · ticks</text>
+        <!-- X axis -->
+        <line x1="310" y1="220" x2="310" y2="200" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <text x="310" y="236" text-anchor="middle">② X axis · category</text>
+        <!-- Grid -->
+        <line x1="600" y1="65" x2="555" y2="65" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <text x="604" y="68">③ Grid (dashed, grey-200)</text>
+        <!-- Series line -->
+        <line x1="600" y1="95" x2="548" y2="95" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <text x="604" y="98">④ Series line (2px, rounded)</text>
+        <!-- Tooltip -->
+        <line x1="600" y1="70" x2="546" y2="70" stroke="#786EBE" stroke-dasharray="2 2" opacity="0"/>
+        <text x="604" y="128">⑤ Tooltip</text>
+        <line x1="600" y1="125" x2="548" y2="70" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <!-- Highlight point -->
+        <line x1="600" y1="160" x2="386" y2="80" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <text x="604" y="163">⑥ Highlight point (ring)</text>
+        <!-- Legend -->
+        <line x1="600" y1="225" x2="216" y2="228" stroke="#786EBE" stroke-dasharray="2 2"/>
+        <text x="604" y="228">⑦ Legend (하단, 좌측 정렬)</text>
+      </g>
+    </svg>
+
+    <!-- Usage table -->
+    <div class="sub-head">
+      <h3>Chart 선택 가이드</h3>
+      <span class="note">용도 → 타입 매핑</span>
+    </div>
+    <table class="usage-table">
+      <thead>
+        <tr>
+          <th>목적</th>
+          <th>차트 타입</th>
+          <th>사용 팔레트</th>
+          <th>대표 화면</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>시계열 추세 (여러 시리즈)</td>
+          <td>Line</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#B775E8"></span><span class="mini-swatch" style="background:#F96E6E"></span><span class="mini-swatch" style="background:#46B2F2"></span> <code>lineChart</code></td>
+          <td>키워드 트렌드, 마이키워드</td>
+        </tr>
+        <tr>
+          <td>카테고리 간 크기 비교</td>
+          <td>Bar (Grouped)</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#DBBAF3"></span><span class="mini-swatch" style="background:#FCB6B6"></span><span class="mini-swatch" style="background:#B6DCFF"></span> <code>barChart</code></td>
+          <td>키워드 갭, 경쟁자 비교</td>
+        </tr>
+        <tr>
+          <td>구성비 · 누적 합계</td>
+          <td>Stacked Bar</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#95B3C7"></span><span class="mini-swatch" style="background:#DA8968"></span><span class="mini-swatch" style="background:#8CBD57"></span> <code>plan</code> · <code>filter.intent</code></td>
+          <td>요금제 통계, INCT 퍼널</td>
+        </tr>
+        <tr>
+          <td>순위 변동</td>
+          <td>Bump</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#B775E8"></span><span class="mini-swatch" style="background:#F96E6E"></span><span class="mini-swatch" style="background:#46B2F2"></span> <code>lineChart</code></td>
+          <td>키워드 트렌드 랭킹</td>
+        </tr>
+        <tr>
+          <td>3차원 관계 (X, Y, Size)</td>
+          <td>Bubble</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#F8CF68"></span><span class="mini-swatch" style="background:#C1A5FC"></span><span class="mini-swatch" style="background:#89E1DC"></span> <code>topic</code></td>
+          <td>여정파인더</td>
+        </tr>
+        <tr>
+          <td>테이블 인라인 트렌드</td>
+          <td>Sparkline (Line + Area)</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#E05265"></span><span class="mini-swatch" style="background:#4F64E1"></span> <code>filter.trend</code></td>
+          <td>쿼리 테이블</td>
+        </tr>
+        <tr>
+          <td>증감 지표 (상승/하락)</td>
+          <td>고정 색상</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#E05265"></span><span class="mini-swatch" style="background:#4F64E1"></span> <code>filter.trend</code></td>
+          <td>모든 % 변화 표시</td>
+        </tr>
+        <tr>
+          <td>클러스터 · 네트워크 (≥20 노드)</td>
+          <td>Graph (D3/Sigma)</td>
+          <td class="pal-cell"><span class="mini-swatch" style="background:#F8CF68"></span><span class="mini-swatch" style="background:#BE9081"></span><span class="mini-swatch" style="background:#F895E8"></span> <code>communityChart</code></td>
+          <td>경로분석 클러스터</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Do's & Don'ts -->
+    <div class="sub-head">
+      <h3>원칙</h3>
+      <span class="note">Do's &amp; Don'ts</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="padding:14px 16px;border-radius:10px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);">
+        <div style="font-weight:700;color:var(--success-dark);font-size:13px;margin-bottom:8px;">Do</div>
+        <ul style="margin:0;padding-left:18px;color:var(--grey-700);font-size:12px;line-height:1.7;">
+          <li>의미가 고정된 값(INCT, Trend, Plan)은 <b>항상 같은 색</b>으로 매핑</li>
+          <li>시리즈 수 ≤ 8이면 <code>lineChart</code>, 그 이상은 <code>topic</code></li>
+          <li>Grid 라인은 <b>점선 dashed</b> + grey-200 (데이터 방해 최소화)</li>
+          <li>Tooltip 은 값 오른쪽 정렬 · 서수 tabular-nums</li>
+          <li>Bump 차트 Y축은 반전 (1등이 위)</li>
+        </ul>
+      </div>
+      <div style="padding:14px 16px;border-radius:10px;background:rgba(224,82,101,0.08);border:1px solid rgba(224,82,101,0.25);">
+        <div style="font-weight:700;color:#B23A4D;font-size:13px;margin-bottom:8px;">Don't</div>
+        <ul style="margin:0;padding-left:18px;color:var(--grey-700);font-size:12px;line-height:1.7;">
+          <li>Intent(INCT)에 <code>lineChart</code> 팔레트 순환 사용 금지</li>
+          <li>증감 색(Increase/Decrease)을 브랜드 Primary 와 혼용 금지</li>
+          <li>3 시리즈 이하에서 <code>topic</code>(20색) 사용 금지 — <code>lineChart</code> 사용</li>
+          <li>Grid 라인 실선 사용 금지 (시각적 노이즈)</li>
+          <li>Bar 차트 모서리 radius &gt; 4px 금지 (값 인지 왜곡)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    이 페이지는 <code>src/theme/*</code> 의 정적 스냅샷입니다. 토큰 변경 시 <code>public/design-system.html</code> 를 함께 갱신해주세요.
+  </footer>
+</div>
+</body>
+</html>
