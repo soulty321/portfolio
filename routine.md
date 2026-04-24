@@ -268,7 +268,7 @@ HIGH와 MEDIUM만 기록. 각 공고에 기업명, 포지션, 링크, 마감일,
 
 # PART 3: 블로그 초안 생성 (★ 매일)
 
-컨퍼런스 자료를 읽고 블로그 초안을 **직접 작성**하여 Discord #blog 채널로 전송해.
+컨퍼런스 자료를 읽고 블로그 초안을 **직접 작성**하여 `drafts/` 폴더에 저장해. push하면 GitHub Actions가 Discord #blog 채널로 자동 전송해.
 
 ## Blog 저장소 설정
 ```bash
@@ -282,6 +282,7 @@ git config user.name "soulty321"
 git config user.email "soulty321@gmail.com"
 git config commit.gpgsign false
 git pull origin main --rebase 2>/dev/null || true
+mkdir -p drafts
 ```
 
 ## 실행 절차
@@ -299,25 +300,14 @@ git pull origin main --rebase 2>/dev/null || true
 - 마크다운 형식 사용
 - **디자이너/IT 직군 독자** 대상
 
-5. 작성된 초안을 Discord #blog 채널로 전송:
-```bash
-BLOG_WEBHOOK="$BLOG_WEBHOOK"
-
-# 첫 메시지: 헤더
-curl -s -X POST "$BLOG_WEBHOOK" \
-  -H "Content-Type: application/json" \
-  -d "{\"content\": \"🚀 **오늘의 블로그 초안이 도착했습니다!**\n원본 파일: \`파일명\`\"}"
-
-# 초안 본문: 2000자 이내로 분할하여 전송
-# 각 청크를 별도 메시지로 전송 (Discord 2000자 제한)
-```
+5. 작성된 초안을 `drafts/YYYY-MM-DD-제목.md` 파일로 저장 (Discord 전송은 GitHub Actions가 자동 처리)
 
 6. `data/process_state.json`의 `processed_files` 배열에 처리한 파일명 추가 후 저장
 7. 커밋 & 푸시:
 ```bash
 cd "$BLOG_DIR"
-git add data/process_state.json
-git commit --no-gpg-sign -m "blog: update process state for YYYY-MM-DD"
+git add drafts/ data/process_state.json
+git commit --no-gpg-sign -m "blog: YYYY-MM-DD 초안 생성"
 git push origin main
 ```
 
