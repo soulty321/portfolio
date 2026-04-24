@@ -301,7 +301,7 @@ git pull origin main --rebase 2>/dev/null || true
 
 5. 작성된 초안을 Discord #blog 채널로 전송:
 ```bash
-BLOG_WEBHOOK="https://discord.com/api/webhooks/1496529785206083644/Wfhz9hnETiOihXTSLJcW_8lrGRPeh7V39TT9venbwCb2qZw6bAI4d1yceDEdWpdN2IYP"
+BLOG_WEBHOOK="$BLOG_WEBHOOK"
 
 # 첫 메시지: 헤더
 curl -s -X POST "$BLOG_WEBHOOK" \
