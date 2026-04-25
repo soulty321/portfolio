@@ -8,6 +8,7 @@ import project5Cover from "../assets/img/project5_cover.png";
 
 
 export const projectData = [
+    // 1. pathDual — 오프너: 특허+26.4% 성장
     {
       id: "project-3",
       overview: {
@@ -73,6 +74,7 @@ export const projectData = [
       },
       isdangen_projectProject: false
     },
+    // 2. myKeyword — 99% 시간 단축, 자동화 스토리
     {
       id: "project-1",
       // Page 1: Overview
@@ -144,6 +146,63 @@ export const projectData = [
       },
       isdangen_projectProject: false
     },
+    // 3. dangen — 라이트 프로젝트 (환기): 커뮤니티 300% 성장
+    {
+      id: "project-dangen_project",
+      overview: {
+        headline: "dangen_project_HEADLINE",
+        summary: "dangen_project_SUMMARY",
+        keyMetrics: ["dangen_project_KEY_METRIC_1", "dangen_project_KEY_METRIC_2", "dangen_project_KEY_METRIC_3"],
+        role: "dangen_project_ROLE",
+        contribution: "dangen_project_CONTRIBUTION",
+        period: "dangen_project_PERIOD",
+        team: "dangen_project_TEAM",
+        coverImage: project5Cover,
+        tags: ["dangen_project_TAG_1", "dangen_project_TAG_2", "dangen_project_TAG_3"]
+      },
+      // Page 1: 문제 발굴
+      problem: {
+        title: "dangen_project_PROBLEM_TITLE",
+        background: "dangen_project_PROBLEM_BACKGROUND",
+        quantitative: "dangen_project_PROBLEM_QUANT",
+        qualitative: "dangen_project_PROBLEM_QUAL",
+        image: "/stitch_source/dangen_projectProblem.svg"
+      },
+      // Page 2: 사용자 리서치
+      strategy: {
+        sectionLabel: "dangen_project_SECTION_RESEARCH",
+        title: "dangen_project_STRATEGY_TITLE",
+        description: "dangen_project_STRATEGY_DESC",
+        cause: "dangen_project_STRATEGY_CAUSE",
+        causeDesc: "dangen_project_STRATEGY_CAUSE_DESC",
+        hypothesis: "dangen_project_STRATEGY_HYPO",
+        image: "/stitch_source/dangen_projectStrategy.svg"
+      },
+      // Page 3: 개선 제안
+      solutionA: {
+        sectionLabel: "dangen_project_SECTION_PROPOSAL",
+        title: "dangen_project_SOL_A_TITLE",
+        summary: "dangen_project_SOL_A_SUMMARY",
+        description: [
+          { title: "dangen_project_SOL_A_DESC_1_TITLE", desc: "dangen_project_SOL_A_DESC_1_DESC" },
+          { title: "dangen_project_SOL_A_DESC_2_TITLE", desc: "dangen_project_SOL_A_DESC_2_DESC" },
+          { title: "dangen_project_SOL_A_DESC_3_TITLE", desc: "dangen_project_SOL_A_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/dangen_projectSolution.svg"
+      },
+      solutionB: null,
+      // Page 4: 성과
+      impact: {
+        outcome: [
+          { title: "dangen_project_IMPACT_OUTCOME_1_TITLE", desc: "dangen_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/dangen_projectImpact-1.svg" },
+          { title: "dangen_project_IMPACT_OUTCOME_2_TITLE", desc: "dangen_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/dangen_projectImpact-2.svg" },
+          { title: "dangen_project_IMPACT_OUTCOME_3_TITLE", desc: "dangen_project_IMPACT_OUTCOME_3_DESC", image: "/stitch_source/dangen_projectImpact-3.svg" }
+        ],
+        lesson: "dangen_project_IMPACT_LESSON"
+      },
+      isdangen_projectProject: true
+    },
+    // 4. designSystem — 기술 깊이: 91x 성능 개선
     {
       id: "project-4",
       overview: {
@@ -210,76 +269,7 @@ export const projectData = [
       },
       isdangen_projectProject: false
     },
-    {
-      id: "project-2",
-      // Page 1: Overview
-      overview: {
-        headline: "myKeywordFilter_project_HEADLINE",
-        summary: "myKeywordFilter_project_SUMMARY",
-        keyMetrics: ["myKeywordFilter_project_KEY_METRIC_1", "myKeywordFilter_project_KEY_METRIC_2", "myKeywordFilter_project_KEY_METRIC_3"],
-        role: "myKeywordFilter_project_ROLE",
-        contribution: "myKeywordFilter_project_CONTRIBUTION",
-        period: "myKeywordFilter_project_PERIOD",
-        team: "myKeywordFilter_project_TEAM",
-        coverImage: project2Cover,
-        tags: ["myKeywordFilter_project_TAG_1", "myKeywordFilter_project_TAG_2", "myKeywordFilter_project_TAG_3"]
-      },
-      // Page 2: Problem Definition
-      problem: {
-        title: "myKeywordFilter_project_PROBLEM_TITLE",
-        background: "myKeywordFilter_project_PROBLEM_BACKGROUND",
-        quantitative: "myKeywordFilter_project_PROBLEM_QUANT",
-        qualitative: "myKeywordFilter_project_PROBLEM_QUAL",
-        image: "/stitch_source/myKeywordFilter_projectProblem.svg"
-      },
-      // Page 3: Strategy & Hypothesis
-      strategy: {
-        title: "myKeywordFilter_project_STRATEGY_TITLE",
-        description: "myKeywordFilter_project_STRATEGY_DESC",
-        cause: "myKeywordFilter_project_STRATEGY_CAUSE",
-        causeDesc: "myKeywordFilter_project_STRATEGY_CAUSE_DESC",
-        hypothesis: "myKeywordFilter_project_STRATEGY_HYPO",
-        image: "/stitch_source/myKeywordFilter_projectStrategy.svg"
-      },
-      // Page 4: Solution A (Core Feature)
-      solutionA: {
-        title: "myKeywordFilter_project_SOL_A_TITLE",
-        summary: "myKeywordFilter_project_SOL_A_SUMMARY",
-        description: [
-          { title: "myKeywordFilter_project_SOL_A_DESC_1_TITLE", desc: "myKeywordFilter_project_SOL_A_DESC_1_DESC" },
-          { title: "myKeywordFilter_project_SOL_A_DESC_2_TITLE", desc: "myKeywordFilter_project_SOL_A_DESC_2_DESC" }
-        ],
-        image: "/stitch_source/myKeywordFilter_projectSolutionA.svg"
-      },
-      // Page 5: Solution B (Detail & Deep Dive)
-      solutionB: {
-        title: "myKeywordFilter_project_SOL_B_TITLE",
-        summary: "myKeywordFilter_project_SOL_B_SUMMARY",
-        description: [
-          { title: "myKeywordFilter_project_SOL_B_DESC_1_TITLE", desc: "myKeywordFilter_project_SOL_B_DESC_1_DESC" },
-          { title: "myKeywordFilter_project_SOL_B_DESC_2_TITLE", desc: "myKeywordFilter_project_SOL_B_DESC_2_DESC" },
-          { title: "myKeywordFilter_project_SOL_B_DESC_3_TITLE", desc: "myKeywordFilter_project_SOL_B_DESC_3_DESC" }
-        ],
-        image: "/stitch_source/myKeywordFilter_projectSolutionB.svg",
-        asIs: {
-            image: "project2_asis.png",
-            desc: "myKeywordFilter_project_SOL_B_ASIS_DESC"
-        },
-        toBe: {
-            image: "project2_tobe.png",
-            desc: "myKeywordFilter_project_SOL_B_TOBE_DESC"
-        }
-      },
-      // Page 6: Impact & Lesson
-      impact: {
-        outcome: [
-            { title: "myKeywordFilter_project_IMPACT_OUTCOME_1_TITLE", desc: "myKeywordFilter_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/myKeywordFilter_projectImpact1.svg" },
-            { title: "myKeywordFilter_project_IMPACT_OUTCOME_2_TITLE", desc: "myKeywordFilter_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/myKeywordFilter_projectImpact2.svg" }
-        ],
-        lesson: "myKeywordFilter_project_IMPACT_LESSON"
-      },
-      isdangen_projectProject: false
-    },
+    // 5. aiAgent — AI/프롬프트 역량: 시의성 높음
     {
       id: "project-7",
       // Page 1: Overview
@@ -342,6 +332,7 @@ export const projectData = [
       },
       isdangen_projectProject: false
     },
+    // 6. journeyFinder — AI 파이프라인 기반 CDJ 자동 분석
     {
       id: "project-8",
       // Page 1: Overview
@@ -413,53 +404,78 @@ export const projectData = [
       },
       isdangen_projectProject: false
     },
+    // 7. myKeywordFilter — 데이터 시각화 전문성
     {
-      id: "project-dangen_project",
+      id: "project-2",
+      // Page 1: Overview
       overview: {
-        headline: "dangen_project_HEADLINE",
-        summary: "dangen_project_SUMMARY",
-        keyMetrics: ["dangen_project_KEY_METRIC_1", "dangen_project_KEY_METRIC_2", "dangen_project_KEY_METRIC_3"],
-        role: "dangen_project_ROLE",
-        contribution: "dangen_project_CONTRIBUTION",
-        period: "dangen_project_PERIOD",
-        team: "dangen_project_TEAM",
-        coverImage: project5Cover,
-        tags: ["dangen_project_TAG_1", "dangen_project_TAG_2", "dangen_project_TAG_3"]
+        headline: "myKeywordFilter_project_HEADLINE",
+        summary: "myKeywordFilter_project_SUMMARY",
+        keyMetrics: ["myKeywordFilter_project_KEY_METRIC_1", "myKeywordFilter_project_KEY_METRIC_2", "myKeywordFilter_project_KEY_METRIC_3"],
+        role: "myKeywordFilter_project_ROLE",
+        contribution: "myKeywordFilter_project_CONTRIBUTION",
+        period: "myKeywordFilter_project_PERIOD",
+        team: "myKeywordFilter_project_TEAM",
+        coverImage: project2Cover,
+        tags: ["myKeywordFilter_project_TAG_1", "myKeywordFilter_project_TAG_2", "myKeywordFilter_project_TAG_3"]
       },
-      // Page 1: 문제 발굴
+      // Page 2: Problem Definition
       problem: {
-        title: "dangen_project_PROBLEM_TITLE",
-        background: "dangen_project_PROBLEM_BACKGROUND",
-        quantitative: "dangen_project_PROBLEM_QUANT",
-        qualitative: "dangen_project_PROBLEM_QUAL",
-        image: "/stitch_source/dangen_projectProblem.svg"
+        title: "myKeywordFilter_project_PROBLEM_TITLE",
+        background: "myKeywordFilter_project_PROBLEM_BACKGROUND",
+        quantitative: "myKeywordFilter_project_PROBLEM_QUANT",
+        qualitative: "myKeywordFilter_project_PROBLEM_QUAL",
+        image: "/stitch_source/myKeywordFilter_projectProblem.svg"
       },
-      // Page 2: 사용자 리서치
+      // Page 3: Strategy & Hypothesis
       strategy: {
-        sectionLabel: "dangen_project_SECTION_RESEARCH",
-        title: "dangen_project_STRATEGY_TITLE",
-        description: "dangen_project_STRATEGY_DESC",
-        cause: "dangen_project_STRATEGY_CAUSE",
-        causeDesc: "dangen_project_STRATEGY_CAUSE_DESC",
-        hypothesis: "dangen_project_STRATEGY_HYPO",
-        image: "/stitch_source/dangen_projectStrategy.svg"
+        title: "myKeywordFilter_project_STRATEGY_TITLE",
+        description: "myKeywordFilter_project_STRATEGY_DESC",
+        cause: "myKeywordFilter_project_STRATEGY_CAUSE",
+        causeDesc: "myKeywordFilter_project_STRATEGY_CAUSE_DESC",
+        hypothesis: "myKeywordFilter_project_STRATEGY_HYPO",
+        image: "/stitch_source/myKeywordFilter_projectStrategy.svg"
       },
-      // Page 3: 개선 제안
+      // Page 4: Solution A (Core Feature)
       solutionA: {
-        sectionLabel: "dangen_project_SECTION_PROPOSAL",
-        title: "dangen_project_SOL_A_TITLE",
-        summary: "dangen_project_SOL_A_SUMMARY",
+        title: "myKeywordFilter_project_SOL_A_TITLE",
+        summary: "myKeywordFilter_project_SOL_A_SUMMARY",
         description: [
-          { title: "dangen_project_SOL_A_DESC_1_TITLE", desc: "dangen_project_SOL_A_DESC_1_DESC" },
-          { title: "dangen_project_SOL_A_DESC_2_TITLE", desc: "dangen_project_SOL_A_DESC_2_DESC" },
-          { title: "dangen_project_SOL_A_DESC_3_TITLE", desc: "dangen_project_SOL_A_DESC_3_DESC" }
+          { title: "myKeywordFilter_project_SOL_A_DESC_1_TITLE", desc: "myKeywordFilter_project_SOL_A_DESC_1_DESC" },
+          { title: "myKeywordFilter_project_SOL_A_DESC_2_TITLE", desc: "myKeywordFilter_project_SOL_A_DESC_2_DESC" }
         ],
-        image: "/stitch_source/dangen_projectSolution.svg"
+        image: "/stitch_source/myKeywordFilter_projectSolutionA.svg"
       },
-      solutionB: null,
-      impact: null,
-      isdangen_projectProject: true
+      // Page 5: Solution B (Detail & Deep Dive)
+      solutionB: {
+        title: "myKeywordFilter_project_SOL_B_TITLE",
+        summary: "myKeywordFilter_project_SOL_B_SUMMARY",
+        description: [
+          { title: "myKeywordFilter_project_SOL_B_DESC_1_TITLE", desc: "myKeywordFilter_project_SOL_B_DESC_1_DESC" },
+          { title: "myKeywordFilter_project_SOL_B_DESC_2_TITLE", desc: "myKeywordFilter_project_SOL_B_DESC_2_DESC" },
+          { title: "myKeywordFilter_project_SOL_B_DESC_3_TITLE", desc: "myKeywordFilter_project_SOL_B_DESC_3_DESC" }
+        ],
+        image: "/stitch_source/myKeywordFilter_projectSolutionB.svg",
+        asIs: {
+            image: "project2_asis.png",
+            desc: "myKeywordFilter_project_SOL_B_ASIS_DESC"
+        },
+        toBe: {
+            image: "project2_tobe.png",
+            desc: "myKeywordFilter_project_SOL_B_TOBE_DESC"
+        }
+      },
+      // Page 6: Impact & Lesson
+      impact: {
+        outcome: [
+            { title: "myKeywordFilter_project_IMPACT_OUTCOME_1_TITLE", desc: "myKeywordFilter_project_IMPACT_OUTCOME_1_DESC", image: "/stitch_source/myKeywordFilter_projectImpact1.svg" },
+            { title: "myKeywordFilter_project_IMPACT_OUTCOME_2_TITLE", desc: "myKeywordFilter_project_IMPACT_OUTCOME_2_DESC", image: "/stitch_source/myKeywordFilter_projectImpact2.svg" }
+        ],
+        lesson: "myKeywordFilter_project_IMPACT_LESSON"
+      },
+      isdangen_projectProject: false
     },
+    // 8. munoArt — 라이트 프로젝트 (클로저): 비주얼+창업, 영업이익률 50.5%
     {
       id: "project-6",
       // Page 1: Overview
