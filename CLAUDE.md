@@ -94,3 +94,13 @@ python3 /Users/ascentkorea/.claude/skills/notebooklm/scripts/run.py ask_question
 
 1p: https://www.figma.com/design/yC4yaCpntjTfgvpaRrn8WT/portfolio_with_claude?node-id=53-1605&m=dev
 2p: https://www.figma.com/design/yC4yaCpntjTfgvpaRrn8WT/portfolio_with_claude?node-id=53-1664&m=dev
+
+## 재정 데이터 변경 규칙 (CRITICAL)
+
+구독 서비스, 보험, 예산, 적금/투자 일정 등 **재정 데이터가 변경될 경우**, 반드시 아래 파일을 업데이트할 것:
+
+**`C:\Users\soult\workSpace\pp_with_claude\routine.md`**
+- ① 월별 생활비 표 (lines 100~115): 잉여금 배분 수치 재계산 후 반영
+- ② 섹션 D 카드값 및 체크리스트 (lines 200~215): 카드값, 보험, 적금 항목 업데이트
+
+변경 예시: 구독 추가/제거, 보험 종료, 새로운 고정 지출 발생, 적금 만기, 도약계좌 납입 변동 등
