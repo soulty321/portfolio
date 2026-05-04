@@ -1,23 +1,82 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="400" height="280">
-  <!-- TO-BE: Focus on name tag -->
-  <text x="200" y="28" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="2">TO-BE</text>
+  <!-- Background -->
+  <rect width="400" height="280" fill="#FAFAFA"/>
 
-  <!-- One large focused product -->
-  <rect x="124" y="50" width="152" height="130" rx="12" fill="#111111"/>
-  <text x="200" y="106" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">🏷 네임택</text>
-  <text x="200" y="126" font-family="'Inter', sans-serif" font-size="11" fill="#aaaaaa" text-anchor="middle">Name Tag</text>
-  <text x="200" y="148" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#37A3E2" text-anchor="middle">82.7%</text>
-  <text x="200" y="166" font-family="'Inter', sans-serif" font-size="10" fill="#aaaaaa" text-anchor="middle">이익 기여도</text>
+  <!-- TO-BE pill -->
+  <rect x="14" y="14" width="60" height="22" rx="11" fill="#FFE4EA"/>
+  <text x="44" y="29" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#E8527C" text-anchor="middle" letter-spacing="1">TO-BE</text>
 
-  <!-- Small secondary products -->
-  <rect x="30" y="100" width="80" height="50" rx="8" fill="#F9F9F9" stroke="#E5E7EB" stroke-width="1.5" opacity="0.6"/>
-  <text x="70" y="124" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">명함(B2B)</text>
-  <text x="70" y="138" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">47.3%</text>
-  <rect x="290" y="100" width="80" height="50" rx="8" fill="#F9F9F9" stroke="#E5E7EB" stroke-width="1.5" opacity="0.6"/>
-  <text x="330" y="124" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">기타</text>
+  <!-- Title (centered in left panel 0–254) -->
+  <text x="127" y="52" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#2D2D2D" text-anchor="middle">작가에서 비즈니스 운영자로</text>
 
-  <!-- Result label -->
-  <rect x="60" y="200" width="280" height="50" rx="8" fill="#F0F9FF" stroke="#37A3E2" stroke-width="1.5"/>
-  <text x="200" y="222" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#111111" text-anchor="middle">✓ Cash Cow 집중 전략</text>
-  <text x="200" y="240" font-family="'Inter', sans-serif" font-size="11" fill="#555555" text-anchor="middle">51.25% 마진율 · 브랜드 프리미엄 확보</text>
+  <!-- Vertical divider -->
+  <line x1="254" y1="36" x2="254" y2="254" stroke="#EDEDED" stroke-width="1.5"/>
+
+  <!--
+    Hub-and-spoke diagram
+    Hub center: (126, 158), hub r=32
+    Spoke distance: 76, spoke r=22
+    Pentagon (clockwise from top, angles 90°/18°/-54°/-126°/162°):
+      작가    (90°):  (126, 82)
+      가격설계자 (18°): (198, 135)
+      마케터  (-54°): (171, 220)
+      운영자  (-126°): (81, 220)
+      리서처  (162°): (54, 135)
+  -->
+
+  <!-- Spoke lines (drawn under circles) -->
+  <line x1="126" y1="158" x2="126" y2="82"  stroke="#FFC5D3" stroke-width="1.5"/>
+  <line x1="126" y1="158" x2="198" y2="135" stroke="#FFC5D3" stroke-width="1.5"/>
+  <line x1="126" y1="158" x2="171" y2="220" stroke="#FFC5D3" stroke-width="1.5"/>
+  <line x1="126" y1="158" x2="81"  y2="220" stroke="#FFC5D3" stroke-width="1.5"/>
+  <line x1="126" y1="158" x2="54"  y2="135" stroke="#FFC5D3" stroke-width="1.5"/>
+
+  <!-- Spoke nodes (circles on top of lines) -->
+
+  <!-- 작가 (top) -->
+  <circle cx="126" cy="82" r="22" fill="white" stroke="#FFC5D3" stroke-width="1.5"/>
+  <text x="126" y="86" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#444444" text-anchor="middle">작가</text>
+
+  <!-- 가격 설계자 (upper-right) -->
+  <circle cx="198" cy="135" r="22" fill="white" stroke="#FFC5D3" stroke-width="1.5"/>
+  <text x="198" y="131" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#444444" text-anchor="middle">가격</text>
+  <text x="198" y="143" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#444444" text-anchor="middle">설계자</text>
+
+  <!-- 마케터 (lower-right) -->
+  <circle cx="171" cy="220" r="22" fill="white" stroke="#FFC5D3" stroke-width="1.5"/>
+  <text x="171" y="224" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#444444" text-anchor="middle">마케터</text>
+
+  <!-- 운영자 (lower-left) -->
+  <circle cx="81" cy="220" r="22" fill="white" stroke="#FFC5D3" stroke-width="1.5"/>
+  <text x="81" y="224" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#444444" text-anchor="middle">운영자</text>
+
+  <!-- 리서처 (upper-left) -->
+  <circle cx="54" cy="135" r="22" fill="white" stroke="#FFC5D3" stroke-width="1.5"/>
+  <text x="54" y="139" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#444444" text-anchor="middle">리서처</text>
+
+  <!-- Center hub -->
+  <circle cx="126" cy="158" r="32" fill="#FF6B8A"/>
+  <text x="126" y="153" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">무노아트</text>
+  <text x="126" y="167" font-family="'Inter', sans-serif" font-size="8" fill="#FFCCD8" text-anchor="middle">1인 운영</text>
+
+  <!-- Right panel: 3 metric cards (x=266, width=120) -->
+
+  <!-- 총 제작 건수 -->
+  <rect x="266" y="37" width="120" height="62" rx="8" fill="white" stroke="#EDEDED" stroke-width="1.5"/>
+  <text x="326" y="57"  font-family="'Inter', sans-serif" font-size="10" fill="#AAAAAA" text-anchor="middle">총 제작 건수</text>
+  <text x="326" y="83"  font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#222222" text-anchor="middle">410건</text>
+
+  <!-- 평균 이익률 -->
+  <rect x="266" y="109" width="120" height="62" rx="8" fill="white" stroke="#EDEDED" stroke-width="1.5"/>
+  <text x="326" y="129" font-family="'Inter', sans-serif" font-size="10" fill="#AAAAAA" text-anchor="middle">평균 이익률</text>
+  <text x="326" y="155" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FF6B8A" text-anchor="middle">50.52%</text>
+
+  <!-- 누적 매출 -->
+  <rect x="266" y="181" width="120" height="62" rx="8" fill="white" stroke="#EDEDED" stroke-width="1.5"/>
+  <text x="326" y="201" font-family="'Inter', sans-serif" font-size="10" fill="#AAAAAA" text-anchor="middle">누적 매출 (4년)</text>
+  <text x="326" y="222" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#222222" text-anchor="middle">6,652,400원</text>
+  <text x="326" y="237" font-family="'Inter', sans-serif" font-size="8.5" fill="#BBBBBB" text-anchor="middle">이익 3,360,800원</text>
+
+  <!-- Bottom caption in left panel -->
+  <text x="126" y="262" font-family="'Inter', sans-serif" font-size="9" fill="#C0C0C0" text-anchor="middle">댓글 분석 → 리서치 → 가격 설계 → 단체 운영</text>
 </svg>

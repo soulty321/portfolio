@@ -1,31 +1,62 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="400" height="280">
-  <!-- AS-IS: Multi-product, high inventory risk -->
-  <text x="200" y="28" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="2">AS-IS</text>
+  <!-- Background -->
+  <rect width="400" height="280" fill="#F7F7F7"/>
 
-  <!-- Many small product boxes (scattered) -->
-  <g opacity="0.8">
-    <rect x="30" y="55" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="56" y="84" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 A</text>
-    <rect x="100" y="55" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="126" y="84" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 B</text>
-    <rect x="170" y="55" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="196" y="84" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 C</text>
-    <rect x="240" y="55" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="266" y="84" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 D</text>
-    <rect x="310" y="55" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="336" y="84" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 E</text>
-    <rect x="65" y="120" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="91" y="149" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 F</text>
-    <rect x="135" y="120" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="161" y="149" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 G</text>
-    <rect x="205" y="120" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="231" y="149" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 H</text>
-    <rect x="275" y="120" width="52" height="52" rx="6" fill="#F0F0F0" stroke="#E5E7EB" stroke-width="1.5"/>
-    <text x="301" y="149" font-family="'Inter', sans-serif" font-size="9" fill="#888888" text-anchor="middle">상품 I</text>
-  </g>
+  <!-- AS-IS pill -->
+  <rect x="14" y="14" width="52" height="22" rx="11" fill="#E6E6E6"/>
+  <text x="40" y="29" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="1">AS-IS</text>
 
-  <!-- Risk label -->
-  <rect x="80" y="198" width="240" height="50" rx="8" fill="#FFF3F3" stroke="#FFCCCC" stroke-width="1.5"/>
-  <text x="200" y="220" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#CC4444" text-anchor="middle">⚠ 다품종 소량 생산</text>
-  <text x="200" y="238" font-family="'Inter', sans-serif" font-size="11" fill="#888888" text-anchor="middle">높은 재고 리스크 · 분산된 마케팅 자원</text>
+  <!-- Title -->
+  <text x="200" y="50" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#2D2D2D" text-anchor="middle">5장의 일러스트를 그리는 작가</text>
+  <text x="200" y="68" font-family="'Inter', sans-serif" font-size="11" fill="#AAAAAA" text-anchor="middle">사업화 의도 0%  ·  자기표현이 전부</text>
+
+  <!-- 5 Instrument Cards (evenly spaced: x=13, 91, 169, 247, 325, width=64) -->
+
+  <!-- 호른 -->
+  <rect x="13" y="82" width="64" height="84" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="45" y="119" font-family="serif" font-size="26" fill="#E0E0E0" text-anchor="middle">♪</text>
+  <text x="45" y="141" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#666666" text-anchor="middle">호른</text>
+  <text x="45" y="156" font-family="'Inter', sans-serif" font-size="8" fill="#C8C8C8" text-anchor="middle">Horn</text>
+
+  <!-- 플루트 -->
+  <rect x="91" y="82" width="64" height="84" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="123" y="119" font-family="serif" font-size="26" fill="#E0E0E0" text-anchor="middle">♪</text>
+  <text x="123" y="141" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#666666" text-anchor="middle">플루트</text>
+  <text x="123" y="156" font-family="'Inter', sans-serif" font-size="8" fill="#C8C8C8" text-anchor="middle">Flute</text>
+
+  <!-- 클라리넷 -->
+  <rect x="169" y="82" width="64" height="84" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="201" y="119" font-family="serif" font-size="26" fill="#E0E0E0" text-anchor="middle">♪</text>
+  <text x="201" y="141" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#666666" text-anchor="middle">클라리넷</text>
+  <text x="201" y="156" font-family="'Inter', sans-serif" font-size="8" fill="#C8C8C8" text-anchor="middle">Clarinet</text>
+
+  <!-- 트럼펫 -->
+  <rect x="247" y="82" width="64" height="84" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="279" y="119" font-family="serif" font-size="26" fill="#E0E0E0" text-anchor="middle">♪</text>
+  <text x="279" y="141" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#666666" text-anchor="middle">트럼펫</text>
+  <text x="279" y="156" font-family="'Inter', sans-serif" font-size="8" fill="#C8C8C8" text-anchor="middle">Trumpet</text>
+
+  <!-- 트롬본 -->
+  <rect x="325" y="82" width="64" height="84" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="357" y="119" font-family="serif" font-size="26" fill="#E0E0E0" text-anchor="middle">♪</text>
+  <text x="357" y="141" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#666666" text-anchor="middle">트롬본</text>
+  <text x="357" y="156" font-family="'Inter', sans-serif" font-size="8" fill="#C8C8C8" text-anchor="middle">Trombone</text>
+
+  <!-- Count badge -->
+  <rect x="170" y="178" width="60" height="24" rx="12" fill="#EFEFEF"/>
+  <text x="200" y="194" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#888888" text-anchor="middle">총 5장</text>
+
+  <!-- Bottom stat cards -->
+  <!-- 역할 -->
+  <rect x="40" y="212" width="140" height="50" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="110" y="230" font-family="'Inter', sans-serif" font-size="10" fill="#AAAAAA" text-anchor="middle">역할</text>
+  <text x="110" y="250" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#444444" text-anchor="middle">작가 (단일)</text>
+
+  <!-- 수익 -->
+  <rect x="220" y="212" width="140" height="50" rx="8" fill="white" stroke="#E8E8E8" stroke-width="1.5"/>
+  <text x="290" y="230" font-family="'Inter', sans-serif" font-size="10" fill="#AAAAAA" text-anchor="middle">수익</text>
+  <text x="290" y="250" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#444444" text-anchor="middle">0원</text>
+
+  <!-- Bottom quote -->
+  <text x="200" y="275" font-family="'Georgia', serif" font-size="10" fill="#C8C8C8" text-anchor="middle" font-style="italic">"내 작품을 세상에 펼쳐보고 싶다"</text>
 </svg>
