@@ -1,12 +1,12 @@
-# Portfolio Review: key.json 검수
+# Portfolio Review: 프로젝트 콘텐츠 검수
 
-이 프로젝트의 `portfolio_analysis.md` 전략 문서를 기준으로 `key.json`의 포트폴리오 텍스트 콘텐츠를 검수합니다.
+이 프로젝트의 `docs/portfolio_analysis.md` 전략 문서를 기준으로 `projects/*.md`의 포트폴리오 텍스트 콘텐츠를 검수합니다.
 
 ## 실행 절차
 
-1. `portfolio_analysis.md`를 읽어 검수 기준을 파악하세요.
-2. `key.json`을 읽어 전체 텍스트 콘텐츠를 파악하세요.
-3. 아래 **검수 체크리스트**를 각 프로젝트(myKeyword_project~aiAgent_project, dangen_project)별로 적용하세요.
+1. `docs/portfolio_analysis.md`를 읽어 검수 기준을 파악하세요.
+2. `projects/` 디렉토리의 각 프로젝트 마크다운 파일을 읽어 전체 텍스트 콘텐츠를 파악하세요.
+3. 아래 **검수 체크리스트**를 각 프로젝트별로 적용하세요.
 4. 결과를 **리포트 형식**으로 출력하고, 각 이슈에 대해 **구체적인 수정안**을 제안하세요.
 
 ## 검수 체크리스트
@@ -70,7 +70,7 @@
 ### ISSUE 항목
 각 이슈에 대해:
 - **[카테고리]** 이슈 설명
-  - 현재: `해당 key.json 키` = "현재 텍스트"
+  - 현재: `projects/{project_id}.md` > {섹션} = "현재 텍스트"
   - 문제: 구체적인 문제점 설명
   - 수정안: "제안하는 개선된 텍스트"
 
@@ -86,6 +86,6 @@
 ## 주의사항
 
 - 수정안은 반드시 한국어로 작성하세요.
-- key.json의 키 이름은 변경하지 마세요. 값(텍스트)만 수정 제안하세요.
-- 수정안 제안 시, portfolio_analysis.md의 원칙을 근거로 제시하세요.
-- 사용자가 수정을 승인하면 key.json에 직접 반영하세요.
+- frontmatter 메타데이터는 변경하지 마세요. 본문 텍스트만 수정 제안하세요.
+- 수정안 제안 시, `docs/portfolio_analysis.md`의 원칙을 근거로 제시하세요.
+- 사용자가 수정을 승인하면 해당 `projects/*.md` 파일에 직접 반영하세요.

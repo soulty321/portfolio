@@ -4,34 +4,47 @@
 
 ## 이 저장소의 목적
 
-이 저장소는 프로덕트 디자이너(UX/UI) **포트폴리오 웹사이트의 콘텐츠 및 에셋 소스**입니다. 실행 가능한 애플리케이션이 아니며 — 데이터, 번역 텍스트, 이미지, 전략 문서를 담고 있으며, Figma를 통해 디자인 및 레이아웃이 관리됩니다.
+이 저장소는 프로덕트 디자이너(UX/UI) **포트폴리오 콘텐츠 및 에셋 관리 저장소** (Figma 무료 + 마크다운 기반)입니다. 실행 가능한 애플리케이션이 아니며 — 프로젝트별 텍스트 콘텐츠, 이미지, 전략 문서를 담고 있으며, Figma를 통해 디자인 및 레이아웃이 관리됩니다.
 
 - **포트폴리오 주인**: 문호균(Moon Ho-kyun)
-- **프로젝트 수**: 8개 (ListeningMind, Dangen 등)
-- **언어**: 한국어/영어 이중 지원 (i18n)
+- **프로젝트 수**: 7개 (myKeywordFilter 제외)
+- **언어**: 한국어 우선 (영어 번역 필요 시 섹션 내 `### EN` 추가)
 
 ## 주요 파일
 
-- **`projectData.js`** — 7개 프로젝트의 구조화된 데이터. 각 프로젝트는 overview, problem, strategy, solutionA, solutionB, impact 섹션으로 구성됩니다. 모든 텍스트 값은 `key.json`을 통해 해석되는 i18n 키(예: `"myKeyword_project_HEADLINE"`)입니다. 이미지 경로는 앱에서 사용하는 `/stitch_source/`를 참조하며, 소스 SVG는 `img_source/`에 위치합니다.
-- **`key.json`** — 한국어/영어 UI 문자열(200개 이상의 키). 키 네이밍 규칙: 프로젝트 콘텐츠는 `P{n}_*`, 내비게이션은 `NAV_*`, 히어로 섹션은 `HERO_*`, 성과는 `ACH_*`, 인덱스 페이지는 `INDEX_*`.
-- **`img_source/`** — 프로젝트 번호(`myKeyword_project`~`aiAgent_project`)별로 정리된 SVG/PNG 에셋. 각 프로젝트에는 Problem, Strategy, SolutionA, SolutionB, Impact(1~3) 이미지와 `img_source/img/`의 커버 이미지가 포함됩니다.
+- **`projects/*.md`** — 7개 프로젝트의 콘텐츠 마크다운. 각 파일은 YAML frontmatter(메타데이터: project_id, title, headline, period, role, contribution, tools, category, status, figma_page, cover_image) + 6개 섹션(Overview → Problem → Strategy → Solution A → Solution B → Impact) + Asset 참조(`> **Assets**: ...`)로 구성됩니다.
+- **`projects/_template.md`** — 새 프로젝트 작성 시 사용하는 마크다운 템플릿.
+- **`img_source/`** — 프로젝트별 SVG/PNG 에셋. 네이밍: `{projectPrefix}_project{Section}.svg`. 프로젝트 4~7(designSystem, dangen 등)은 하이픈 포함(예: `designSystem_projectSolution-A.svg`, `dangen_projectImpact-1.svg`). 커버 이미지는 `img_source/img/`에 위치.
 
 ## 전략 문서
 
-포트폴리오의 디자인 철학과 콘텐츠 전략을 정의하는 4개의 마크다운 파일:
+포트폴리오의 디자인 철학과 콘텐츠 전략을 정의하는 4개의 마크다운 파일 (`docs/`):
 
-- `portfolio_analysis.md` — 사용자 중심 포트폴리오 전략; 평가자 니즈 분석
-- `job_crawler.md` — 채용 공고 분석 및 지원 기업 타게팅 방법론
-- `layoyt_composer.md` — 레이아웃 구성 가이드라인 (커버, 문제, 솔루션, 임팩트 섹션)
-- `portfolio_contents_maker.md` — 콘텐츠 구조: 문제 정의 -> 목표 -> 솔루션 -> 결과; 2~3개 프로젝트, 최대 약 40슬라이드 권장
+- `docs/portfolio_analysis.md` — 사용자 중심 포트폴리오 전략; 평가자 니즈 분석
+- `docs/job_crawler.md` — 채용 공고 분석 및 지원 기업 타게팅 방법론
+- `docs/layoyt_composer.md` — 레이아웃 구성 가이드라인 (커버, 문제, 솔루션, 임팩트 섹션)
+- `docs/portfolio_contents_maker.md` — 콘텐츠 구조: 문제 정의 -> 목표 -> 솔루션 -> 결과; 2~3개 프로젝트, 최대 약 40슬라이드 권장
 
 ## 콘텐츠 규칙
 
-- 사용자에게 노출되는 모든 텍스트는 `key.json`에 작성하며, `projectData.js`에 직접 하드코딩하지 않음
-- 프로젝트 섹션은 엄격한 내러티브 흐름을 따름: Overview -> Problem -> Strategy -> Solution A -> Solution B (AS-IS/TO-BE 포함) -> Impact & Lesson
-- 이미지 네이밍: `p{n}{Section}.svg` (예: `myKeyword_projectProblem.svg`, `pathDual_projectSolutionA.svg`)
-- 프로젝트 4~7은 하이픈이 포함된 이미지 이름 사용 (예: `designSystem_projectSolution-A.svg`, `p5Impact-1.svg`)
-- 사이드 프로젝트는 `projectData.js`에서 `isdangen_projectProject: true`로 표시
+- 모든 텍스트 콘텐츠는 `projects/{projectId}.md`에 작성
+- 프로젝트 섹션은 엄격한 내러티브 흐름을 따름: Overview → Problem → Strategy → Solution A → Solution B (AS-IS/TO-BE 포함) → Impact & Lesson
+- 각 섹션 상단에 `> **Assets**: ...` 블록으로 해당 SVG 경로를 명시
+- 사이드 프로젝트는 frontmatter에서 `category: "side"`로 표시
+- 피그마 반영 시 마크다운 텍스트를 피그마에 수동 복사
+
+## 워크플로우 (Claude Code 협업)
+
+1. **콘텐츠 수정**: `projects/*.md` 편집 (Claude Code 또는 직접)
+2. **콘텐츠 검수**: `/portfolio-review` 실행 (전략 문서 기준 6개 체크리스트 검수)
+3. **피그마 반영**: 마크다운 텍스트를 피그마에 수동 복사
+4. **버전 관리**: git commit으로 변경 이력 추적
+
+### Claude Code 역할
+- 콘텐츠 초안 작성 및 개선 (NotebookLM 질의 포함)
+- 전략 문서 기준 텍스트 검수 (가독성, 논리흐름, 데이터근거, 사용자중심, 뻔한표현탐지, 기능정의서화탐지)
+- 프로젝트 간 일관성 확인
+- 타겟 기업별 포트폴리오 조율 지원
 
 # NotebookLM 프로젝트 자료
 
