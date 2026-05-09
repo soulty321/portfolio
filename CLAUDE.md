@@ -14,6 +14,9 @@
 
 - **`projects/*.md`** — 7개 프로젝트의 콘텐츠 마크다운. 각 파일은 YAML frontmatter(메타데이터: project_id, title, headline, period, role, contribution, tools, category, status, figma_page, cover_image) + 6개 섹션(Overview → Problem → Strategy → Solution A → Solution B → Impact) + Asset 참조(`> **Assets**: ...`)로 구성됩니다.
 - **`projects/_template.md`** — 새 프로젝트 작성 시 사용하는 마크다운 템플릿.
+- **`projects/resume.md`** — 이력서 (base resume). `<!-- sync:* -->` 마커로 프로젝트 데이터와 자동 동기화됨.
+- **`projects/_metrics_registry.md`** — 7개 프로젝트의 핵심 정량 성과 레지스트리. `/resume-sync` 실행 시 자동 갱신.
+- **`applications/`** — 기업별 지원 자료 폴더. 각 폴더에 `portfolio_lineup.md`(칵테일 전략), `resume_overlay.md`(맞춤 이력서), `resume_final.md`(병합 결과) 포함.
 - **`img_source/`** — 프로젝트별 SVG/PNG 에셋. 네이밍: `{projectPrefix}_project{Section}.svg`. 프로젝트 4~7(designSystem, dangen 등)은 하이픈 포함(예: `designSystem_projectSolution-A.svg`, `dangen_projectImpact-1.svg`). 커버 이미지는 `img_source/img/`에 위치.
 
 ## 전략 문서
@@ -36,15 +39,29 @@
 ## 워크플로우 (Claude Code 협업)
 
 1. **콘텐츠 수정**: `projects/*.md` 편집 (Claude Code 또는 직접)
-2. **콘텐츠 검수**: `/portfolio-review` 실행 (전략 문서 기준 6개 체크리스트 검수)
-3. **피그마 반영**: 마크다운 텍스트를 피그마에 수동 복사
-4. **버전 관리**: git commit으로 변경 이력 추적
+2. **이력서 동기화**: `/resume-sync` 실행 (프로젝트 성과 → resume.md + _metrics_registry.md 자동 갱신)
+3. **콘텐츠 검수**: `/portfolio-review` 실행 (전략 문서 기준 6개 체크리스트 검수)
+4. **기업별 지원 준비**: `/company-prep {기업명}` 실행 (동기화 → 폴더 생성 → 검수 통합 워크플로)
+5. **기업 폴더 개별 생성**: `/build-application {기업명}` 실행 (portfolio_lineup + resume_overlay + resume_final 생성)
+6. **피그마 반영**: 마크다운 텍스트를 피그마에 수동 복사
+7. **버전 관리**: git commit으로 변경 이력 추적
 
 ### Claude Code 역할
 - 콘텐츠 초안 작성 및 개선 (NotebookLM 질의 포함)
 - 전략 문서 기준 텍스트 검수 (가독성, 논리흐름, 데이터근거, 사용자중심, 뻔한표현탐지, 기능정의서화탐지)
 - 프로젝트 간 일관성 확인
-- 타겟 기업별 포트폴리오 조율 지원
+- 포트폴리오 ↔ 이력서 자동 동기화
+- 타겟 기업별 포트폴리오 라인업 + 이력서 맞춤화
+
+### 기업별 지원 폴더 구조
+```
+applications/
+  _template/                 # 신규 기업 폴더 템플릿
+  {company_name}/
+    portfolio_lineup.md      # JD 키워드, 칵테일 전략, 프로젝트 순서
+    resume_overlay.md        # base resume와 다른 부분 (소개, Strength, 지원동기)
+    resume_final.md          # /build-application 실행 시 자동 생성 (base + overlay 병합)
+```
 
 # NotebookLM 프로젝트 자료
 
